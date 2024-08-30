@@ -1,37 +1,50 @@
-// // __tests__/CareerFilter.test.tsx
+// __tests__/CareerFilter.test.tsx
 // import { render, screen, fireEvent } from '@testing-library/react';
-// import '@testing-library/jest-dom';
+// import '@testing-library/jest-dom/extend-expect';
 // import CareerFilter from './CareerFilter';
 
-// describe('CareerFilter', () => {
-//   test('renders filter items', () => {
-//     render(<CareerFilter />);
-//     const items = ['All', '커리어 탐색', '서류 준비', '면접 준비'];
-
-//     items.forEach(item => {
-//       expect(screen.getByText(item)).toBeInTheDocument();
-//     });
-//   });
-
-//   test('clicking on a filter item sets it as active', () => {
+// describe('CareerFilter Component', () => {
+//   test('renders all filter buttons', () => {
 //     render(<CareerFilter />);
 
-//     const careerExploreItem = screen.getByText('커리어 탐색');
-//     fireEvent.click(careerExploreItem);
-
-//     expect(careerExploreItem).toHaveClass('active'); // Tailwind CSS class for active state
+//     // Check if all buttons are rendered
+//     expect(screen.getByText(/All/)).toBeInTheDocument();
+//     expect(screen.getByText(/STEP 1\n커리어 탐색/)).toBeInTheDocument();
+//     expect(screen.getByText(/STEP 2\n서류 준비/)).toBeInTheDocument();
+//     expect(screen.getByText(/STEP 3\n면접 준비/)).toBeInTheDocument();
 //   });
 
-//   // 테스트 성공 코드 예시
-//   // it("clicking on a filter item sets it as active", () => {
-//   //   const { getByText } = render(<CareerFilter />);
-//   //   const careerExploreItem = getByText('커리어 탐색');
+//   test('clicking "All" selects all filters', () => {
+//     render(<CareerFilter />);
 
-//   //   fireEvent.click(careerExploreItem);
+//     const allButton = screen.getByText(/All/);
+//     fireEvent.click(allButton);
 
-//   //   // 'bg-blue-500 text-white'가 올바른 활성 상태 클래스이므로 이를 체크합니다.
-//   //   expect(careerExploreItem).toHaveClass('bg-blue-500');
-//   //   expect(careerExploreItem).toHaveClass('text-white');
-//   // });
+//     // Click "All" again and check if "STEP 1" only is selected
+//     fireEvent.click(allButton);
+//     expect(screen.getByText(/STEP 1\n커리어 탐색/)).toHaveClass('bg-pr-100 text-white');
+//   });
 
+//   test('clicking a step filter selects it', () => {
+//     render(<CareerFilter />);
+
+//     const step1Button = screen.getByText(/STEP 1\n커리어 탐색/);
+//     fireEvent.click(step1Button);
+
+//     expect(step1Button).toHaveClass('bg-pr-100 text-white');
+//   });
+
+//   test('clicking "All" after selecting steps selects all steps', () => {
+//     render(<CareerFilter />);
+
+//     const step1Button = screen.getByText(/STEP 1\n커리어 탐색/);
+//     fireEvent.click(step1Button);
+
+//     const allButton = screen.getByText(/All/);
+//     fireEvent.click(allButton);
+
+//     expect(screen.getByText(/STEP 1\n커리어 탐색/)).toHaveClass('bg-pr-100 text-white');
+//     expect(screen.getByText(/STEP 2\n서류 준비/)).toHaveClass('bg-pr-100 text-white');
+//     expect(screen.getByText(/STEP 3\n면접 준비/)).toHaveClass('bg-pr-100 text-white');
+//   });
 // });
