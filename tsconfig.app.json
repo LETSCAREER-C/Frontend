@@ -26,7 +26,10 @@
       "jest",
       "@testing-library/jest-dom",
       "vite-plugin-svgr/client"
-    ]
+    ],
+    /* 추가 설정 */
+    "esModuleInterop": true, // CommonJS와 ES 모듈 간 호환성
+    "allowSyntheticDefaultImports": true // CommonJS 모듈의 기본 import 지원
   },
   "include": [
     "src",
