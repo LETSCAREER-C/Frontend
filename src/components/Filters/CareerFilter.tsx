@@ -1,60 +1,64 @@
-// All 필터는 선택해도 색상 바뀌지 않음 & All 2번 누르면 일단 step1 선택되게 해놓음
-// 반응형 pc 미구현
 import { useState } from 'react';
+// 스텝 1,2,3 누르면 ALL까지 채워지게?
+// 스텝 1,2,3 다 취소했을 땐?
 
-// program_type에 맞게 items 배열을 객체 배열로 수정
 const items = [
-  { label: 'All', program_type: 'all' },
-  { label: 'STEP 1\n커리어 탐색', program_type: 'step1' },
-  { label: 'STEP 2\n서류 준비', program_type: 'step2' },
-  { label: 'STEP 3\n면접 준비', program_type: 'step3' }
+  { label: { step: '', description: 'ALL' }, career_type: 'all' },
+  { label: { step: 'STEP 1', description: '커리어탐색' }, career_type: 'step1' },
+  { label: { step: 'STEP 2', description: '서류 준비' }, career_type: 'step2' },
+  { label: { step: 'STEP 3', description: '면접 준비' }, career_type: 'step3' }
 ];
 
 const CareerFilter = () => {
-  const [activeItems, setActiveItems] = useState<string[]>(['all']); // program_type 값을 기본값으로 사용
+  const [activeItems, setActiveItems] = useState<string[]>(['all']); // 기본값으로 'all' 사용
 
-  const handleClick = (programType: string) => {
-    if (programType === 'all') {
-      if (activeItems.includes('all') && activeItems.length === items.length) {
-        // "All"이 선택된 상태에서 다시 "All"을 클릭하면 "STEP 1"만 선택
-        setActiveItems(['step1']);
-      } else {
-        // "All"이 선택되지 않은 상태에서는 모든 스텝 선택
-        setActiveItems(items.map(item => item.program_type));
-      }
+  const handleClick = (careerType: string) => {
+    if (careerType === 'all') {
+      // "All" 버튼을 클릭했을 때 모든 스텝을 활성화
+      setActiveItems(items.map(item => item.career_type));
     } else {
       if (activeItems.includes('all')) {
-        // "All"이 선택된 상태에서 개별 스텝이 클릭되면 해당 스텝만 선택 해제
-        setActiveItems(
-          activeItems.includes(programType)
-            ? activeItems.filter(activeItem => activeItem !== programType)
-            : [...activeItems, programType]
-        );
+        // "All"이 선택된 상태에서 개별 스텝이 클릭되면 "All"을 비활성화하고 해당 스텝만 활성화
+        setActiveItems([careerType]);
       } else {
-        // "All"이 선택되지 않은 상태에서 개별 스텝 클릭 처리
+        // 개별 스텝 클릭 시 기존 동작
         setActiveItems(
-          activeItems.includes(programType)
-            ? activeItems.filter(activeItem => activeItem !== programType)
-            : [...activeItems, programType]
+          activeItems.includes(careerType)
+            ? activeItems.filter(activeItem => activeItem !== careerType)
+            : [...activeItems, careerType]
         );
       }
     }
   };
-
   return (
-    <div className="relative w-full inline-flex items-start justify-center text-center text-[0.75rem] text-neut-45 font-font h-10">
-      {items.map(item => (
-        <button
-          key={item.program_type}
-          className={`h-10 px-5 py-1 rounded-full border border-[#e7e7e7] justify-center items-center text-xs leading-none ${item.program_type !== 'all' && activeItems.includes(item.program_type) ? 'bg-pr-100 text-white' : 'neut-95 text-neut-45'}`}
-          onClick={() => handleClick(item.program_type)}
-          style={{ whiteSpace: 'pre-line' }}
-        >
-          {item.label}
-        </button>
-      ))}
+    <div className='flex justify-center'>
+      <div className="relative w-full max-w-[350px] h-[50px] mx-[20px] mt-[12px] mb-[8px] gap-[8px] border-t border-t-[0.8px] border-transparent inline-flex justify-center text-sm bg-white ">
+        <div className='flex w-full h-full  rounded-3xl overflow-hidden border justify-center items-center'>
+          {items.map(item => (
+            <button
+              key={item.career_type}
+              className={` box-border px-[8px] w-[82px] h-[38px] mx-[0.8px]  items-center leading-none whitespace-pre-line ${activeItems.includes(item.career_type)
+                ? 'bg-pr-100 text-white' // 활성화된 상태일 때
+                : 'bg-white text-neut-45' // 비활성화된 상태일 때
+                }`}
+              style={{
+                borderRadius: '320px',
+              }}
+              onClick={() => handleClick(item.career_type)}
+            >
+              <div className="flex flex-col items-center">
+                <span className="text-[9.6px]">{item.label.step}</span>
+                {item.label.description && (
+                  <span className="text-xs font-semibold">{item.label.description}</span>
+                )}
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
+
 };
 
 export default CareerFilter;

@@ -5,7 +5,7 @@ import { Lets, Career, Hamburger as HamburgerIcon, Xclose } from '../../assets/s
 const Logo: React.FC = () => {
   return (
     <div className="flex items-center">
-      <Lets className="w-7 h-7" />
+      <Lets className=" w-7 h-7" />
       <Career className="w-16 h-7 ml-2" />
     </div>
   );
@@ -23,7 +23,7 @@ const Navigation: React.FC = () => {
   return (
     <>
       <nav className="bg-gray-100 navigation_wrapper fixed top-0 left-0 w-full bg-white shadow-md z-50 flex justify-between items-center px-5 py-3 md:py-0 md:px-8 max-w-screen-md mx-auto">
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center justify-between w-full ">
           <Logo />
           <button onClick={toggleMenu} className="ml-auto">
             {menuToggle ? (

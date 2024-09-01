@@ -4,3 +4,6 @@ export { default as Hamburger } from "./Hamburger";
 export { default as Insta } from "./Insta";
 export { default as Lets } from "./Lets";
 export { default as Xclose } from "./Xclose";
+export { default as CareerExplore } from "./CareerExplore";
+export { default as DocumentPrepare } from "./DocumentPrepare";
+export { default as InterviewPrepare } from "./InterviewPrepare";

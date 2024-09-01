@@ -7,9 +7,6 @@ export default function App() {
 
   return (
     <div className="w-[95%] mx-auto">
-      <Navigation></Navigation>
-      <Outlet />
-      <Footer></Footer>
     </div>
   );
 }
