@@ -29,7 +29,6 @@ const getStatusText = (status: RecruitState) => {
   }
 };
 
-
 interface RecruitTagProps {
   status: RecruitState;  // RecruitState enum을 사용하도록 업데이트
 }
@@ -41,8 +40,6 @@ const RecruitTags: React.FC<RecruitTagProps> = ({ status }) => {
   // 상태에 따른 크기 설정
   const isRecruiting = status === 'recruiting';
   const width = isRecruiting ? 'w-[54px]' : 'w-[41px]'; // 모집 중일 때 더 큰 너비
-
-  // const width = status === RecruitState.RECRUITING ? 'w-[54px]' : 'w-[41px]';
 
   return (
     <div className={`flex justify-center items-center px-[10px] py-[4px] rounded-lg gap-1 ${width} ${tagStyles}`}>
