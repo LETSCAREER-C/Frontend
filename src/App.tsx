@@ -5,9 +5,11 @@ import Footer from './components/Footer/Footer';
 
 export default function App() {
   return (
-    <div className="w-[95%] mx-auto">
+    <div className="w-full max-w-[390px] desktop:max-w-[1200px] mx-auto">
       <Navigation></Navigation>
-      <Outlet />
+      <main className=" min-h-[800px]">
+        <Outlet />
+      </main>
       <Footer></Footer>
     </div>
   );
