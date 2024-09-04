@@ -15,8 +15,8 @@ export default function DetailPage() {
     const fetchDetail = async () => {
       try {
         const res = await axios.get(`https://letmec.p-e.kr/program/${programId}`);
-        setDetailData(res.data);
-        console.log(res);
+        setDetailData(res.data.result);
+
         console.log('데이터 확인', detailData);
       } catch (error) {
         console.log('에러 발생', error);
