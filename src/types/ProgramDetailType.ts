@@ -56,7 +56,7 @@ export interface Curriculum {
   content: string;
 }
 
-// 리뷰 타입 정의
+// 리뷰 타입 정의 -> 리뷰 작성 시간
 export interface Review {
   userName: string;
   content: string;
