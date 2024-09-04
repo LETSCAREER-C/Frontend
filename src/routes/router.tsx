@@ -1,21 +1,31 @@
-import { createBrowserRouter } from 'react-router-dom';
-import App from '../App';
-import ListPage from '../pages/ListPage/ListPage';
-import ReviewPage from '../pages/ReviewPage/ReviewPage';
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
+import ListPage from "../pages/ListPage/ListPage";
+import ReviewPage from "../pages/ReviewPage/ReviewPage";
+import DetailPage from "../pages/DetailPage/DetailPage";
+import NotFound from "../pages/NotFound/NotFound";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
       {
+        path: "/program/:programId",
+        element: <DetailPage />,
+      },
+      {
         path: "listpage",
-        element: <ListPage />
+        element: <ListPage />,
       },
       {
         path: "review",
-        element: <ReviewPage />
+        element: <ReviewPage />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
