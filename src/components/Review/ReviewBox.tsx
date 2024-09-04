@@ -28,9 +28,9 @@ const ReviewBox: React.FC<ReviewProps> = ({ review }) => {
         ))}
       </div>
       <div className='text-[16px] sm:text-[18px] font-semibold mb-2'>{review.program_name}</div>
-      <div className='text-sm text-gray-500 mb-4'>{review.review_date}</div>
-      <div className='text-sm font-medium mb-[16px]'>{review.user_name}</div>
-      <div className='text-sm text-gray-700'>{review.contents}</div>
+      <div className='text-[16px] text-gray-500 mb-4'>{review.review_date}</div>
+      <div className='text-[16px] font-medium mb-[16px]'>{review.user_name}</div>
+      <div className='text-[16px] text-gray-700'>{review.contents}</div>
     </article>
   );
 }
