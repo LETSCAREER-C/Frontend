@@ -1,4 +1,5 @@
 import { Review } from '../../types/ProgramDetailType';
+import { Star } from '../../assets/svg';
 
 interface BEST_REVIEW {
   bestReview: Review[];
@@ -25,9 +26,10 @@ export default function BestReview({ bestReview, programTitle }: BEST_REVIEW) {
                   {Array(bestreview.grade)
                     .fill(0)
                     .map((_, i) => (
-                      <span key={i} className="text-blue-500 text-lg">
-                        ⭐
-                      </span>
+                      <Star
+                        key={i}
+                        className="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-[16px]"
+                      />
                     ))}
                 </div>
               </div>
