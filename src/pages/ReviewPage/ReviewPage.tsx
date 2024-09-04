@@ -4,7 +4,14 @@ import ReviewBox from '../../components/Review/\bReviewBox';
 const ReviewPage: React.FC = () => {
   return (
     <div>
-      <ReviewBox />
+      <ReviewBox review={{
+        id: 0,
+        number_of_star: 0,
+        program_name: '',
+        review_date: '',
+        user_name: '',
+        contents: ''
+      }} />
     </div>
   )
 }
