@@ -1,6 +1,6 @@
-import { Outlet } from 'react-router-dom';
-import Navigation from './components/Navigations/Navigation';
-import Footer from './components/Footer/Footer';
+import { Outlet } from "react-router-dom";
+import Navigation from "./components/Navigations/Navigation";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
   return (
