@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ReviewBox from "../../components/Review/ReviewBox"; // ReviewBox 컴포넌트 임포트
+import ReviewBox from "../../components/Review/ReviewBox";
 
 // Review 타입 정의
 interface Review {
@@ -61,18 +61,25 @@ const ReviewPage: React.FC = () => {
         },
       ];
 
-      setReviews(dummyData); // 상태 설정
+      setReviews(dummyData);
     };
 
     fetchReviews();
   }, []);
 
   return (
-    <div className='flex flex-wrap justify-center items-center mt-[72px]'>
-      {reviews.map((review) => (
-        <ReviewBox key={review.id} review={review} />
-      ))}
-    </div>
+    <>
+      <header className="w-full h-[410px] mb-[80px] bg-Neutral-grayscale-75">
+        {/* 리쿠르트 태그 / 커리어 필터 /타입 필터 가져오기 */}
+      </header>
+      <main>
+        <section className='flex flex-wrap justify-center items-center mt-[110px]'>
+          {reviews.map((review) => (
+            <ReviewBox key={review.id} review={review} />
+          ))}
+        </section>
+      </main>
+    </>
   );
 }
 

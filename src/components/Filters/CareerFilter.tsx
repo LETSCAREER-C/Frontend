@@ -2,15 +2,16 @@ import { useState } from 'react';
 
 const items = [
   { label: { step: '', description: 'ALL' }, career_type: 'all' },
-  { label: { step: 'STEP 1', description: '커리어탐색' }, career_type: 'step1' },
-  { label: { step: 'STEP 2', description: '서류 준비' }, career_type: 'step2' },
-  { label: { step: 'STEP 3', description: '면접 준비' }, career_type: 'step3' }
+  { label: { step: 'STEP 1', description: '커리어탐색' }, career_type: 'CAREER_EXPLORE' },
+  { label: { step: 'STEP 2', description: '서류 준비' }, career_type: 'DOCUMENT_PREPARE' },
+  { label: { step: 'STEP 3', description: '면접 준비' }, career_type: 'INTERVIEW_PREPARE' }
 ];
 
 const CareerFilter = () => {
   const [activeItems, setActiveItems] = useState<string[]>(['all']); // 기본값으로 'all' 사용
 
   const handleClick = (careerType: string) => {
+    console.log(careerType);
     if (careerType === 'all') {
       // "All" 버튼을 클릭했을 때 모든 스텝을 활성화
       setActiveItems(items.map(item => item.career_type));

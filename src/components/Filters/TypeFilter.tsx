@@ -1,14 +1,15 @@
 import { useState } from 'react';
 
 const items = [
-  { label: '챌린지', program_type: 'challenge' },
-  { label: 'LIVE 클래스', program_type: 'live-class' }
+  { label: '챌린지', program_type: 'CHALLENGE' },
+  { label: 'LIVE 클래스', program_type: 'LIVECLASS' }
 ];
 
 const TypeFilter = () => {
-  const [activeItems, setActiveItems] = useState<string[]>(['challenge', 'live-class']);
+  const [activeItems, setActiveItems] = useState<string[]>(['CHALLENGE', 'LIVECLASS']);
 
   const handleClick = (programType: string) => {
+    console.log(programType);
     setActiveItems(prevActiveItems =>
       prevActiveItems.includes(programType)
         ? prevActiveItems.filter(item => item !== programType) // 이미 활성화된 상태라면 비활성화
@@ -25,7 +26,7 @@ const TypeFilter = () => {
           <button
             key={item.program_type}
             className={`pt-[8px] pb-[20px] rounded-full border ${activeItems.includes(item.program_type) ? 'bg-Primary-10 text-Primary-100 border-Primary-50' : 'bg-white text-Neutral-grayscale-40 border-Neutral-grayscale-80'} 
-            desktop:px-[16px] desktop:py-[8px] desktop:w-[${item.program_type === 'live-class' ? '110px' : '74px'}] desktop:h-[40px] desktop:gap-[10px] desktop:border-[1px] desktop:rounded-[99px]`}
+            desktop:px-[16px] desktop:py-[8px] desktop:w-[${item.program_type === 'LIVECLASS' ? '110px' : '74px'}] desktop:h-[40px] desktop:gap-[10px] desktop:border-[1px] desktop:rounded-[99px]`}
             onClick={() => handleClick(item.program_type)}
           >
             {item.label}
