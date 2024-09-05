@@ -35,7 +35,8 @@ export default function DetailPage() {
         hookingArr={DUMMY_DATA.hooking}
         programIntro={DUMMY_DATA.description}
         lecturerIntro={DUMMY_DATA.lecturer}
-        curriculum={DUMMY_DATA.curriculum}
+        curriculums={DUMMY_DATA.curriculum}
+        latestReviews={DUMMY_DATA.latestReviews}
         faq={DUMMY_DATA.faq}
       />
     </main>

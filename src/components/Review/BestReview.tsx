@@ -23,14 +23,9 @@ export default function BestReview({ bestReview, programTitle }: BEST_REVIEW) {
                   <p className="text-sm text-gray-500">{programTitle}</p>
                 </div>
                 <div className="flex">
-                  {Array(bestreview.grade)
-                    .fill(0)
-                    .map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-[16px]"
-                      />
-                    ))}
+                  {Array.from({ length: bestreview.grade }, (_, i) => (
+                    <Star key={i} className="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-[16px]" />
+                  ))}
                 </div>
               </div>
               <p className="text-sm text-gray-600">{bestreview.content}</p>

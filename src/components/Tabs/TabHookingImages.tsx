@@ -4,7 +4,7 @@ interface Props {
   hookingData: Hooking;
 }
 
-export default function HookingImages({ hookingData }: Props) {
+export default function TabHookingImages({ hookingData }: Props) {
   return (
     <article className="p-8 bg-white rounded-lg shadow-md max-w-2xl mx-auto my-8">
       {hookingData.preTitle && (
