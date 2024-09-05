@@ -51,7 +51,7 @@ export interface Lecturer {
 
 // 커리큘럼 타입 정의
 export interface Curriculum {
-  order: string;
+  order: string; // 순서 두자리수로 주기
   title: string;
   content: string;
 }
