@@ -3,6 +3,7 @@ import CareerFilter from '../../components/Filters/CareerFilter';
 import ProgramBox from '../../components/PageNation/ProgramBox';
 import TypeFilter from '../../components/Filters/TypeFilter';
 import { RecruitState } from '../../components/Filters/RecruitTags';
+import axios from 'axios';
 
 interface Program {
   id: number;
@@ -100,22 +101,35 @@ const dummyData: Program[] = [
 
 const ListPage: React.FC = () => {
   const [programs, setPrograms] = useState<Program[]>([]);
+  const [typeFilter, setTypeFilter] = useState<string[]>(['CHALLENGE', 'LIVECLASS']);
+  const [careerFilter, setCareerFilter] = useState<string[]>(['ALL']);
 
   useEffect(() => {
+    const fetchPrograms = async () => {
+      const url = 'https://letmec.p-e.kr/program/list';
+      const res = await axios.get(url, {
+        params: {
+          careerTag: careerFilter,
+          programTypes: typeFilter,
+          page: 0,
+        },
+      });
+    };
+    fetchPrograms();
     setPrograms(dummyData);
-  }, []);
+  }, [careerFilter, typeFilter]);
 
   return (
     <div>
-      <CareerFilter />
-      <TypeFilter />
-      <div className='flex flex-wrap justify-center items-center'>
+      <CareerFilter activeItem={careerFilter} setActiveItem={setCareerFilter} />
+      <TypeFilter activeItems={typeFilter} setActiveItems={setTypeFilter} />
+      <div className="flex flex-wrap justify-center items-center">
         {programs.map((program) => (
           <ProgramBox key={program.id} program={program} />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default ListPage;
