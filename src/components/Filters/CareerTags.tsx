@@ -1,5 +1,6 @@
 import React from 'react';
 import { DocumentPrepare, CareerExplore, InterviewPrepare } from '../../assets/svg'
+// 백엔드 변수랑 이름 맞추기!!
 
 // 상태에 따른 스타일을 반환하는 함수
 const getTagStyles = (status: string) => {

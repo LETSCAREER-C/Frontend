@@ -19,7 +19,7 @@ const ReviewBox: React.FC<ReviewProps> = ({ review }) => {
       className="
         w-[289px] h-[328px] p-[20px]
         sm:w-[360px] sm:h-[328px] sm:px-[40px] sm:-py[28px]
-        border border-gray-300 rounded-lg m-4
+        border border-gray-300 rounded-lg m-4 bg-white
       "
     >
       <div className="flex items-center gap-[4px]">
