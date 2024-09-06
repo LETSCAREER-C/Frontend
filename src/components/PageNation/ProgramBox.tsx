@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import RecruitTags, { RecruitState } from "../Filters/RecruitTags";
-import CareerTags from "../Filters/CareerTags";
-import NotifyButton from "../Buttons/NotifyButton";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import RecruitTags, { RecruitState } from '../Filters/RecruitTags';
+import CareerTags from '../Filters/CareerTags';
+import NotifyButton from '../Buttons/NotifyButton';
 
 interface Program {
   id: number;
@@ -24,9 +25,11 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
+  const navigate = useNavigate();
+
   const handleNotificationClick = () => {
     // 여기에 알림 신청 로직 추가
-    alert("출시 알림 신청 완료!");
+    alert('출시 알림 신청 완료!');
   };
 
   return (
@@ -35,6 +38,9 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
       className="relative flex flex-col justify-center rounded-lg border border-gray-300 mb-[20px] mr-[20px] w-[165px] h-[306px] p-[8px] sm:w-[275px] sm:h-[321px] sm:p-[10px] font-pretendard"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={() => {
+        navigate('/program/1');
+      }}
     >
       {program.status === RecruitState.ENDED && (
         <div className="absolute inset-0 bg-[#27272D47] bg-opacity-28 rounded-lg z-10"></div>
@@ -48,7 +54,7 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
       </div>
       <span className="flex inline-flex">
         <RecruitTags status={program.status} />
-        <CareerTags status={"career-explore"} />
+        <CareerTags status={'career-explore'} />
       </span>
       <h2 className="text-[14px] font-semibold mb-2">{program.title}</h2>
       <p className="text-[12px] font-normal text-gray-600">{program.intro}</p>
@@ -56,8 +62,8 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
         <span className="text-gray-800">모집 마감 </span> D-{program.dday}
       </p>
       <p className="text-[12px] font-medium text-pr-100">
-        <span className="text-gray-800">진행 일정</span>{" "}
-        {program.program_start_date} - {program.program_finish_date}
+        <span className="text-gray-800">진행 일정</span> {program.program_start_date} -{' '}
+        {program.program_finish_date}
       </p>
       {program.status === RecruitState.ENDED && isHovered && (
         <div className="absolute b-[8px] inset-0 flex items-center justify-center z-20">

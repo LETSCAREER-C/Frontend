@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { RecommendedProgram } from '../../types/ProgramDetailType';
 
 interface Props {
@@ -43,11 +43,14 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
       {/* 프로그램 목록 */}
       <div className="grid gap-4">
         {filteredPrograms.slice(0, 3).map((program) => (
-          <div key={program.programId} className="bg-white rounded-lg shadow p-4">
+          <div
+            key={program.programId}
+            className="bg-white rounded-lg shadow p-4 mx-auto w-[276px] font-pretendard whitespace-pre-line"
+          >
             <img
               src={program.thumbnail}
               alt={program.title}
-              className="w-full h-32 object-cover rounded mb-4"
+              className="w-[255px] h-[164px] object-cover rounded mb-4"
             />
             <h3 className="font-bold text-base mb-1">{program.title}</h3>
             <p className="text-sm text-gray-500 mb-2">{program.intro}</p>

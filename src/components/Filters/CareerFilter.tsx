@@ -13,7 +13,6 @@ interface CareerFilterProps {
 }
 
 const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }) => {
-
   const handleClick = (careerType: string) => {
     if (careerType === 'ALL') {
       const isAllSelected = activeItem.includes('ALL');
@@ -21,8 +20,7 @@ const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }
         return; // 'ALL'이 이미 선택된 상태라면 아무것도 하지 않음
       }
       setActiveItem(['ALL']); // 'ALL' 클릭 시 activeItem은 'ALL'로만 설정
-    }
-    else {
+    } else {
       // 'ALL'이 선택된 상태에서 다른 버튼 클릭 시 'ALL'을 비활성화하고 개별 항목만 활성화
       const isAllSelected = activeItem.includes('all');
       if (isAllSelected) {
@@ -30,7 +28,6 @@ const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }
       } else {
         setActiveItem([careerType]); // 다른 필터 선택 시 선택된 필터만 활성화
       }
-
     }
   };
 
@@ -41,10 +38,11 @@ const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }
           {items.map((item) => (
             <button
               key={item.career_type}
-              className={`box-border px-[8px] desktop:px-[10px] py-[8px] desktop:py-[8px] w-[82px] desktop:w-[142px] h-[38px] mx-[0.8px] items-center leading-none whitespace-pre-line ${activeItem.includes(item.career_type)
-                ? 'bg-Primary-100 text-white' // 활성화된 상태일 때
-                : 'bg-white text-Neutral-grayscale-45' // 비활성화된 상태일 때
-                }`}
+              className={`box-border px-[8px] desktop:px-[10px] py-[8px] desktop:py-[8px] w-[82px] desktop:w-[142px] h-[38px] mx-[0.8px] items-center leading-none whitespace-pre-line ${
+                activeItem.includes(item.career_type)
+                  ? 'bg-Primary-100 text-white' // 활성화된 상태일 때
+                  : 'bg-white text-Neutral-grayscale-45' // 비활성화된 상태일 때
+              }`}
               style={{
                 borderRadius: '320px',
               }}
