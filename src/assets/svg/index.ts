@@ -1,6 +1,7 @@
 export { default as BackBtn } from './BackBtn';
 export { default as Blog } from './Blog';
 export { default as Career } from './Career';
+export { default as EmptyStar } from './EmptyStar';
 export { default as Hamburger } from './Hamburger';
 export { default as Insta } from './Insta';
 export { default as Lets } from './Lets';
