@@ -37,6 +37,7 @@ export default function DetailPage() {
         lecturerIntro={DUMMY_DATA.lecturer}
         curriculums={DUMMY_DATA.curriculum}
         latestReviews={DUMMY_DATA.latestReviews}
+        recommendedPrograms={DUMMY_DATA.recommendedPrograms}
         faq={DUMMY_DATA.faq}
       />
     </main>

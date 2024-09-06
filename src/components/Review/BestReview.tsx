@@ -8,7 +8,7 @@ interface BEST_REVIEW {
 
 export default function BestReview({ bestReview, programTitle }: BEST_REVIEW) {
   return (
-    <section className="bg-Neutral-grayscale-90 py-10">
+    <section className="bg-Neutral-grayscale-90 py-10 ">
       <div className="mt-20 px-5 font-pretendard max-w-2xl mx-auto">
         <h1 className="text-Neutral-grayscale-0 text-2xl font-bold mb-10 text-center">
           렛츠커리어로 커리어를
@@ -20,7 +20,7 @@ export default function BestReview({ bestReview, programTitle }: BEST_REVIEW) {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex flex-col">
                   <p className="text-lg font-semibold text-gray-800">{bestreview.userName}</p>
-                  <p className="text-sm text-gray-500">{programTitle}</p>
+                  <p className="text-sm font-medium text-gray-500">{programTitle}</p>
                 </div>
                 <div className="flex">
                   {Array.from({ length: bestreview.grade }, (_, i) => (
@@ -28,7 +28,7 @@ export default function BestReview({ bestReview, programTitle }: BEST_REVIEW) {
                   ))}
                 </div>
               </div>
-              <p className="text-sm text-gray-600">{bestreview.content}</p>
+              <p className="font-normal text-Neutral-grayscale-30">{bestreview.content}</p>
             </div>
           ))}
         </article>
