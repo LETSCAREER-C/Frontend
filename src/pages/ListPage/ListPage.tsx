@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import CareerFilter from "../../components/Filters/CareerFilter";
 import ProgramBox from "../../components/PageNation/ProgramBox";
@@ -9,104 +10,104 @@ import { Program } from "../../types/Program";
 const dummyData: Program[] = [
   {
     id: 1,
-    title: "CX Manager의 모든 것과 커리어 설계",
-    intro: "제너럴의 스페셜리스트, CX Manager",
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
     dday: 12,
-    program_start_date: "YY.MM.DD",
-    program_finish_date: "YY.MM.DD",
-    imageUrl: "https://via.placeholder.com/149x106",
+    program_start_date: 'YY.MM.DD',
+    program_finish_date: 'YY.MM.DD',
+    imageUrl: '/svg/challange_listpage_thumbnail.svg',
     status: RecruitState.RECRUITING,
     career_type: 'CAREER_EXPLORE',
     program_type: 'CHALLENGE'
   },
   {
     id: 2,
-    title: "CX Manager의 모든 것과 커리어 설계",
-    intro: "제너럴의 스페셜리스트, CX Manager",
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
     dday: 12,
-    program_start_date: "YY.MM.DD",
-    program_finish_date: "YY.MM.DD",
-    imageUrl: "https://via.placeholder.com/149x106",
+    program_start_date: 'YY.MM.DD',
+    program_finish_date: 'YY.MM.DD',
+    imageUrl: '/svg/challange_listpage_thumbnail.svg',
     status: RecruitState.RECRUITING,
     career_type: 'INTERVIEW_PREPARE',
     program_type: 'LIVECLASS'
   },
   {
     id: 3,
-    title: "CX Manager의 모든 것과 커리어 설계",
-    intro: "제너럴의 스페셜리스트, CX Manager",
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
     dday: 12,
-    program_start_date: "YY.MM.DD",
-    program_finish_date: "YY.MM.DD",
-    imageUrl: "https://via.placeholder.com/149x106",
+    program_start_date: 'YY.MM.DD',
+    program_finish_date: 'YY.MM.DD',
+    imageUrl: '/svg/challange_listpage_thumbnail.svg',
     status: RecruitState.ENDED,
     career_type: 'INTERVIEW_PREPARE',
     program_type: 'CHALLENGE'
   },
   {
     id: 4,
-    title: "CX Manager의 모든 것과 커리어 설계",
-    intro: "제너럴의 스페셜리스트, CX Manager",
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
     dday: 12,
-    program_start_date: "YY.MM.DD",
-    program_finish_date: "YY.MM.DD",
-    imageUrl: "https://via.placeholder.com/149x106",
+    program_start_date: 'YY.MM.DD',
+    program_finish_date: 'YY.MM.DD',
+    imageUrl: '/svg/challange_listpage_thumbnail.svg',
     status: RecruitState.RECRUITING,
     career_type: 'DOCUMENT_PREPARE',
     program_type: 'LIVECLASS'
   },
   {
     id: 5,
-    title: "CX Manager의 모든 것과 커리어 설계",
-    intro: "제너럴의 스페셜리스트, CX Manager",
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
     dday: 12,
-    program_start_date: "YY.MM.DD",
-    program_finish_date: "YY.MM.DD",
-    imageUrl: "https://via.placeholder.com/149x106",
+    program_start_date: 'YY.MM.DD',
+    program_finish_date: 'YY.MM.DD',
+    imageUrl: '/svg/challange_listpage_thumbnail.svg',
     status: RecruitState.ENDED,
     career_type: 'CAREER_EXPLORE',
     program_type: 'CHALLENGE'
   },
   {
     id: 6,
-    title: "CX Manager의 모든 것과 커리어 설계",
-    intro: "제너럴의 스페셜리스트, CX Manager",
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
     dday: 12,
     program_start_date: "YY.MM.DD",
     program_finish_date: "YY.MM.DD",
-    imageUrl: "https://via.placeholder.com/149x106",
+    imageUrl: '/svg/challange_listpage_thumbnail.svg',
     status: RecruitState.ENDED,
     career_type: 'DOCUMENT_PREPARE',
     program_type: 'CHALLENGE'
   },
   {
     id: 7,
-    title: "CX Manager의 모든 것과 커리어 설계",
-    intro: "제너럴의 스페셜리스트, CX Manager",
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
     dday: 12,
-    program_start_date: "YY.MM.DD",
-    program_finish_date: "YY.MM.DD",
-    imageUrl: "https://via.placeholder.com/149x106",
+    program_start_date: 'YY.MM.DD',
+    program_finish_date: 'YY.MM.DD',
+    imageUrl: '/svg/challange_listpage_thumbnail.svg',
     status: RecruitState.ENDED,
     career_type: 'INTERVIEW_PREPARE',
     program_type: 'CHALLENGE'
   },
   {
     id: 8,
-    title: "CX Manager의 모든 것과 커리어 설계",
-    intro: "제너럴의 스페셜리스트, CX Manager",
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
     dday: 12,
-    program_start_date: "YY.MM.DD",
-    program_finish_date: "YY.MM.DD",
-    imageUrl: "https://via.placeholder.com/149x106",
+    program_start_date: 'YY.MM.DD',
+    program_finish_date: 'YY.MM.DD',
+    imageUrl: '/svg/challange_listpage_thumbnail.svg',
     status: RecruitState.ENDED,
     career_type: 'DOCUMENT_PREPARE',
     program_type: 'CHALLENGE'
   },
   {
     id: 9,
-    title: "CX Manager의 모든 것과 커리어 설계",
-    intro: "제너럴의 스페셜리스트, CX Manager",
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
     dday: 12,
     program_start_date: "YY.MM.DD",
     program_finish_date: "YY.MM.DD",
@@ -158,11 +159,8 @@ const ListPage: React.FC = () => {
   const [programs, setPrograms] = useState<Program[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1); // 현재 페이지 상태
   const [postsPerPage] = useState<number>(8); // 한 페이지에 보여줄 아이템 수 설정
-  const [careerFilter, setCareearFilter] = useState<string[]>(["ALL"]);
-  const [typeFilter, setTypeFilter] = useState<string[]>([
-    "CHALLENGE",
-    "LIVECLASS",
-  ]);
+  const [careerFilter, setCareearFilter] = useState<string[]>(['ALL']);
+  const [typeFilter, setTypeFilter] = useState<string[]>(['CHALLENGE', 'LIVECLASS']);
 
   useEffect(() => {
     setPrograms(dummyData);

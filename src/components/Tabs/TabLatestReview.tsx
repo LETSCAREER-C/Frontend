@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Review } from '../../types/ProgramDetailType';
 import { Star } from '../../assets/svg';
 
@@ -7,6 +8,7 @@ interface Props {
 }
 
 export default function TabLatestReview({ reviews }: Props) {
+  const { programId } = useParams<{ programId: string }>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showButtons, setShowButtons] = useState(window.innerWidth >= 768);
   const [touchStartX, setTouchStartX] = useState(0); // 터치 시작 위치
@@ -71,7 +73,10 @@ export default function TabLatestReview({ reviews }: Props) {
         </p>
 
         <div className="flex justify-end">
-          <a href="" className="font-pretendard text-base text-Neutral-grayscale-30">
+          <a
+            href={`/program/${programId}/review`}
+            className="font-pretendard text-base text-Neutral-grayscale-30"
+          >
             더보기
           </a>
         </div>
@@ -81,7 +86,7 @@ export default function TabLatestReview({ reviews }: Props) {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {reviews.map((review, index) => (
-            <div key={index} className="w-full flex-shrink-0">
+            <div key={index} className="w-full flex-shrink-0 font-pretendard">
               <div className="bg-white rounded-lg p-6">
                 {/* 별점 */}
                 <div className="flex mb-4">
@@ -90,11 +95,11 @@ export default function TabLatestReview({ reviews }: Props) {
                   ))}
                 </div>
                 {/* 프로그램 이름 */}
-                <p className="text-sm font-semibold mb-1">[프로그램 이름]</p>
-                {/* 사용자 이름과 작성 시간 */}
-                <p className="text-xs text-gray-500 mb-2">
-                  {review.createAt.toLocaleDateString()} {review.userName}
-                </p>
+                <p className="text-sm font-semibold mb-1">이력서&자기소개서 완성 1기</p>
+                {/* 작성 시간 */}
+                <p className="text-xs text-gray-500 mb-2">{review.createAt.toLocaleDateString()}</p>
+                {/* 사용자 이름 */}
+                <p className="text-xs text-gray-500 mb-2">{review.userName}</p>
                 {/* 리뷰 내용 */}
                 <p className="text-sm text-gray-600">{review.content}</p>
               </div>

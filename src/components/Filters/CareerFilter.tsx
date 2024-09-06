@@ -39,10 +39,11 @@ const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }
           {items.map((item) => (
             <button
               key={item.career_type}
-              className={`box-border px-[8px] desktop:px-[10px] py-[8px] desktop:py-[8px] w-[82px] desktop:w-[142px] h-[38px] mx-[0.8px] items-center leading-none whitespace-pre-line ${activeItem.includes(item.career_type)
-                ? 'bg-Primary-100 text-white' // 활성화된 상태일 때
-                : 'bg-white text-Neutral-grayscale-45' // 비활성화된 상태일 때
-                }`}
+              className={`box-border px-[8px] desktop:px-[10px] py-[8px] desktop:py-[8px] w-[82px] desktop:w-[142px] h-[38px] mx-[0.8px] items-center leading-none whitespace-pre-line ${
+                activeItem.includes(item.career_type)
+                  ? 'bg-Primary-100 text-white' // 활성화된 상태일 때
+                  : 'bg-white text-Neutral-grayscale-45' // 비활성화된 상태일 때
+              }`}
               style={{
                 borderRadius: '320px',
               }}

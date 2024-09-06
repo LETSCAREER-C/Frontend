@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import ReviewBox from "../../components/Review/ReviewBox";
-import { BackBtn } from "../../assets/svg";
-import SortReview from "../../components/Review/SortReview";
+import React, { useEffect, useState } from 'react';
+import ReviewBox from '../../components/Review/ReviewBox';
+import { BackBtn } from '../../assets/svg';
+import SortReview from '../../components/Review/SortReview';
 // import LiveThumbnail from "../../assets/images/LiveThumbnail.png"
+import { dummyData_review } from '../../assets/dummy/ReviewPageDummy';
 
 export interface Review {
   id: number;
@@ -21,120 +22,24 @@ const ReviewPage: React.FC = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [sortedReviews, setSortedReviews] = useState<Review[]>([]);
 
+  const [isMoblie, setIsMoblie] = useState<boolean>(false);
+
   useEffect(() => {
     const fetchReviews = async () => {
-      const dummyData: Review[] = [
-        {
-          id: 1,
-          number_of_star: 5,
-          program_name: "가나다라마바사",
-          review_date: "24.01.01",
-          user_name: "홍길동",
-          dream_work_field: "IT",
-          year: 4,
-          major: "디자인 전공",
-          status: "합격",
-          contents:
-            "텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트",
-        },
-        {
-          id: 2,
-          number_of_star: 3,
-          program_name: "가나다라마바사akdfkj",
-          review_date: "24.02.01",
-          user_name: "홍길동",
-          dream_work_field: "IT",
-          year: 4,
-          major: "디자인 전공",
-          status: "합격",
-          contents:
-            "텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트",
-        },
-        {
-          id: 3,
-          number_of_star: 4,
-          program_name: "가나다라마바사akdfkj",
-          review_date: "24.05.20",
-          user_name: "홍길동",
-          dream_work_field: "IT",
-          year: 4,
-          major: "디자인 전공",
-          status: "합격",
-          contents:
-            "텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트",
-        },
-        {
-          id: 4,
-          number_of_star: 2,
-          program_name: "가나다라마바사akdfkj",
-          review_date: "24.08.11",
-          user_name: "홍길동",
-          dream_work_field: "IT",
-          year: 4,
-          major: "디자인 전공",
-          status: "불합격",
-          contents:
-            "텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트",
-        },
-        {
-          id: 5,
-          number_of_star: 5,
-          program_name: "가나다라마바사akdfkj",
-          review_date: "24.09.01",
-          user_name: "홍길동",
-          dream_work_field: "IT",
-          year: 4,
-          major: "디자인 전공",
-          status: "합격",
-          contents:
-            "텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트",
-        },
-        {
-          id: 6,
-          number_of_star: 4,
-          program_name: "가나다라마바사akdfkj",
-          review_date: "24.12.01",
-          user_name: "홍길동",
-          dream_work_field: "IT",
-          year: 4,
-          major: "디자인 전공",
-          status: "합격",
-          contents:
-            "텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트",
-        },
-        {
-          id: 7,
-          number_of_star: 5,
-          program_name: "가나다라마바사akdfkj",
-          review_date: "24.12.01",
-          user_name: "홍길동",
-          dream_work_field: "IT",
-          year: 4,
-          major: "디자인 전공",
-          status: "합격",
-          contents:
-            "텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트",
-        },
-        {
-          id: 8,
-          number_of_star: 3,
-          program_name: "가나다라마바사akdfkj",
-          review_date: "24.12.01",
-          user_name: "홍길동",
-          dream_work_field: "IT",
-          year: 4,
-          major: "디자인 전공",
-          status: "불합격",
-          contents:
-            "텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트텍스트",
-        },
-      ];
-
-      setReviews(dummyData);
-      setSortedReviews(dummyData);
+      setReviews(dummyData_review);
+      setSortedReviews(dummyData_review);
     };
 
     fetchReviews();
+
+    const handleRize = () => {
+      setIsMoblie(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleRize);
+    handleRize();
+
+    return () => window.removeEventListener('resize', handleRize);
   }, []);
 
   const handleSortChange = (sortedData: Review[]) => {
@@ -149,13 +54,12 @@ const ReviewPage: React.FC = () => {
     <div className="bg-Neutral-grayscale-90 pb-[160px] font-pretendard">
       <div className="justify-center min-h-screen flex flex-col items-center relative ">
         <img
+          src={isMoblie ? '/svg/detail_mobile_thumbnail.svg' : '/svg/detail_desktop_thumbnail.svg'}
           alt="LiveThumbnail"
           className="flex w-full h-[410px] mt-[60px] mb-[80px] bg-Neutral-grayscale-75"
         />
         <header className="relative flex flex-col items-center justify-center w-full text-center w-[258px] h-[66px]">
-          <p className="h-[26px] mb-[8px] text-Primary-100 text-[18px] font-medium">
-            강좌 후기
-          </p>
+          <p className="h-[26px] mb-[8px] text-Primary-100 text-[18px] font-medium">강좌 후기</p>
           <div className="relative flex items-center justify-between w-[258px]">
             <p className="w-full h-[32px] text-Neutral-grayscale-0 text-[24px] font-bold whitespace-nowrap">
               실제 수강생들의 솔직한 후기
