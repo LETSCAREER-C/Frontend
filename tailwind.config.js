@@ -74,8 +74,7 @@ module.exports = {
         'White-Opacity-008': '#FFFFFF14',
         'White-Opacity-005': '#FFFFFFd',
         'White-Opacity-0': '#D8D8D8',
-        'neut-60': '#bdbdbd',
-        'neut-75': '#D8D8D8',
+        'Point-Normal': '#DAFF7C',
       },
       fontFamily: {
         pretendard: ['Pretendard'],

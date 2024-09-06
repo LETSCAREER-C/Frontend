@@ -123,13 +123,15 @@ const ListPage: React.FC = () => {
     <div>
       <CareerFilter activeItem={careerFilter} setActiveItem={setCareerFilter} />
       <TypeFilter activeItems={typeFilter} setActiveItems={setTypeFilter} />
-      <div className="flex flex-wrap justify-center items-center">
+      <div className='flex flex-wrap justify-center items-center'>
         {programs.map((program) => (
           <ProgramBox key={program.id} program={program} />
         ))}
       </div>
     </div>
   );
+
 };
 
 export default ListPage;
+

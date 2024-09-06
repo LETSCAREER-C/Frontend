@@ -16,22 +16,19 @@ const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }
 
   const handleClick = (careerType: string) => {
     if (careerType === 'ALL') {
-      // 'ALL'을 클릭하면 나머지 career_type 모두 선택 (UI 상으로는 'ALL'만 활성화)
-      setActiveItem(['all', 'CAREER_EXPLORE', 'DOCUMENT_PREPARE', 'INTERVIEW_PREPARE']);
-    } else {
-      // 'ALL'이 선택된 상태에서 다른 버튼 클릭 시 'ALL'을 비활성화하고 개별 항목만 활성화
-      const isSelected = activeItem.includes(careerType);
-      const isAllSelected = activeItem.includes('all');
-      // const filteredItems = activeItem.filter(item => item !== 'ALL');
-      // setActiveItem(
-      //   isSelected
-      //     ? filteredItems.filter(item => item !== careerType) // 클릭한 버튼이 이미 선택된 상태면 비활성화
-      //     : [...filteredItems, careerType] // 클릭한 버튼이 선택되지 않은 상태면 활성화
-      // );
+      const isAllSelected = activeItem.includes('ALL');
       if (isAllSelected) {
-        setActiveItem([careerType]);
+        return; // 'ALL'이 이미 선택된 상태라면 아무것도 하지 않음
+      }
+      setActiveItem(['ALL']); // 'ALL' 클릭 시 activeItem은 'ALL'로만 설정
+    }
+    else {
+      // 'ALL'이 선택된 상태에서 다른 버튼 클릭 시 'ALL'을 비활성화하고 개별 항목만 활성화
+      const isAllSelected = activeItem.includes('all');
+      if (isAllSelected) {
+        setActiveItem([careerType]); // 'ALL'이 선택된 상태면 'ALL'을 해제하고 개별 필터만 활성화
       } else {
-        setActiveItem([careerType]);
+        setActiveItem([careerType]); // 다른 필터 선택 시 선택된 필터만 활성화
       }
 
     }

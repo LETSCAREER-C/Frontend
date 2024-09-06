@@ -10,10 +10,6 @@ const items = [
   { label: 'LIVE 클래스', program_type: 'LIVECLASS' },
 ];
 
-// const TypeFilter: React.FC<props> = ({ activeItem, setActiveItem }) => {
-//   const handleClick = (programType: string) => {
-//     setActiveItem(programType);
-//   };
 const TypeFilter: React.FC<Props> = ({ activeItems, setActiveItems }) => {
   const handleClick = (programType: string) => {
     if (activeItems.includes(programType)) {
