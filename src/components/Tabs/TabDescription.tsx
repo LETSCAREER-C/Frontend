@@ -19,19 +19,21 @@ export default function TabDescription({ introData }: Props) {
 
   return (
     <article>
-      <section className="p-8 bg-white rounded-lg shadow-md max-w-2xl mx-auto my-8">
+      <section className="max-w-2xl mx-auto mb-8 font-pretendard whitespace-pre-line">
         {/* Title Section */}
         {introData.title && (
-          <h2 className="text-2xl font-bold text-gray-800 mt-2 mb-6">{introData.title}</h2>
+          <h2 className="text-2xl font-bold text-Neutral-grayscale-0 text-center mt-2 mb-14">
+            {introData.title}
+          </h2>
         )}
 
         {/* Hashtags Section */}
         {introData.hashtags && (
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2 mb-14 justify-center">
             {introData.hashtags.map((tag, index) => (
               <span
                 key={index}
-                className="bg-blue-100 text-blue-600 font-medium py-1 px-3 rounded-full"
+                className="bg-Neutral-grayscale-100 text-Primary-100 font-medium py-1 px-3 rounded-lg border-[1px] border-Primary-100"
               >
                 {tag.hashtag}
               </span>
@@ -41,7 +43,7 @@ export default function TabDescription({ introData }: Props) {
 
         {/* Content Section */}
         {introData.content && (
-          <p className="text-gray-700 text-base mb-6 whitespace-pre-line">{introData.content}</p>
+          <p className="text-Neutral-grayscale-10 text-base mb-14">{introData.content}</p>
         )}
 
         {/* Description Images Section */}

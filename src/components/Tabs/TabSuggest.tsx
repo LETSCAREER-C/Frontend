@@ -12,23 +12,31 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
   const filteredPrograms = recommendedPrograms.filter((program) => program.tag === activeTab);
 
   return (
-    <section className="mx-auto p-4 max-w-xl">
-      <div className="text-center mb-6">
-        <h2 className="font-bold text-lg">추천 강좌</h2>
-        <p className="text-sm text-gray-500">이런 강좌는 어떠세요?</p>
-      </div>
-      {/* 탭 메뉴 */}
-      <div className="flex justify-center space-x-4 mb-6">
-        {['탐색', '서류', '면접'].map((tag) => (
-          <button
+    <section className="mx-auto px-4 max-w-xl font-pretendard">
+      <p className="text-center font-bold text-2xl mt-1 mb-[72px]">이런 강좌는 어떠세요?</p>
+
+      <div className="flex justify-around space-x-8 mb-[72px] w-[350px] mx-auto">
+        {['탐색', '서류', '면접'].map((tag, index) => (
+          <div
             key={tag}
             onClick={() => setActiveTab(tag)}
-            className={`font-semibold py-1 px-4 rounded ${
-              activeTab === tag ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+            className={`text-center cursor-pointer ${
+              activeTab === tag
+                ? 'text-Neutral-grayscale-10 border-b-2 border-Primary-100'
+                : 'text-Neutral-grayscale-70'
             }`}
           >
-            {tag}
-          </button>
+            <p
+              className={`font-medium text-xs ${activeTab === tag ? 'text-Neutral-grayscale-10' : 'text-Neutral-grayscale-70'}`}
+            >
+              STEP{index + 1}
+            </p>
+            <p
+              className={`font-semibold text-sm ${activeTab === tag ? 'text-Neutral-grayscale-10' : 'text-Neutral-grayscale-70'}`}
+            >
+              {tag === '탐색' ? '커리어 탐색' : tag === '서류' ? '서류 준비' : '면접 준비'}
+            </p>
+          </div>
         ))}
       </div>
 

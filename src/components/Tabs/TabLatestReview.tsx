@@ -65,14 +65,24 @@ export default function TabLatestReview({ reviews }: Props) {
       onTouchEnd={handleTouchEnd}
     >
       {/* 리뷰 항목들 */}
-      <div className="overflow-hidden">
+      <div className="overflow-hidden w-[290px] mx-auto">
+        <p className="font-pretendard text-center font-bold text-2xl mt-2 mb-[72px]">
+          실제 수강생들의 솔직한 후기
+        </p>
+
+        <div className="flex justify-end">
+          <a href="" className="font-pretendard text-base text-Neutral-grayscale-30">
+            더보기
+          </a>
+        </div>
+
         <div
-          className="flex transition-transform duration-500"
+          className="flex transition-transform duration-500 mt-2 border-[1px] border-Black_Opacity-12"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {reviews.map((review, index) => (
-            <div key={index} className="w-full flex-shrink-0 px-4">
-              <div className="bg-white rounded-lg shadow-md p-6">
+            <div key={index} className="w-full flex-shrink-0">
+              <div className="bg-white rounded-lg p-6">
                 {/* 별점 */}
                 <div className="flex mb-4">
                   {Array.from({ length: review.grade }, (_, i) => (

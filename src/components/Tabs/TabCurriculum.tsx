@@ -6,19 +6,13 @@ interface Props {
 
 export default function TabCurriculum({ curriculum }: Props) {
   return (
-    <article className="w-full max-w-md mx-auto rounded-lg bg-white shadow-md mb-4 p-6">
-      <div className="flex items-start">
-        {/* 순서 번호 */}
-        <span className="text-Primary-100 text-xl font-bold mr-4">{curriculum.order}</span>
-
-        {/* 커리큘럼 제목과 내용 */}
-        <div className="flex-1">
-          <h3 className="font-semibold text-lg text-Neutral-grayscale-30 mb-2">
-            {curriculum.title}
-          </h3>
-          <p className="text-sm text-Neutral-grayscale-35">{curriculum.content}</p>
-        </div>
+    <article className="bg-Neutral-grayscale-100 w-[350px] mx-auto rounded-2xl mb-3 p-5 border-[1px] border-Black_Opacity-12 font-pretendard">
+      <div className="flex items-center mb-2">
+        <span className="text-Primary-100 text-[26px] font-semibold mr-1">{curriculum.order}</span>
+        <h3 className="font-semibold text-lg text-Neutral-grayscale-30">{curriculum.title}</h3>
       </div>
+
+      <p className="text-base font-medium text-Neutral-grayscale-35">{curriculum.content}</p>
     </article>
   );
 }
