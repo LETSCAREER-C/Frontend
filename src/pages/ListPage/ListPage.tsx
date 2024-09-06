@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import CareerFilter from '../../components/Filters/CareerFilter';
-import ProgramBox from '../../components/PageNation/ProgramBox';
-import TypeFilter from '../../components/Filters/TypeFilter';
-import { RecruitState } from '../../components/Filters/RecruitTags';
-import PageNation from '../../components/PageNation/PageNation';
+import React, { useEffect, useState } from "react";
+import CareerFilter from "../../components/Filters/CareerFilter";
+import ProgramBox from "../../components/PageNation/ProgramBox";
+import TypeFilter from "../../components/Filters/TypeFilter";
+import { RecruitState } from "../../components/Filters/RecruitTags";
+import PageNation from "../../components/PageNation/PageNation";
 
 interface Program {
   id: number;
@@ -19,115 +19,107 @@ interface Program {
 const dummyData: Program[] = [
   {
     id: 1,
-    title: 'CX Manager의 모든 것과 커리어 설계',
-    intro: '제너럴의 스페셜리스트, CX Manager',
+    title: "CX Manager의 모든 것과 커리어 설계",
+    intro: "제너럴의 스페셜리스트, CX Manager",
     dday: 12,
-    program_start_date: 'YY.MM.DD',
-    program_finish_date: 'YY.MM.DD',
-    imageUrl: 'https://via.placeholder.com/149x106',
+    program_start_date: "YY.MM.DD",
+    program_finish_date: "YY.MM.DD",
+    imageUrl: "https://via.placeholder.com/149x106",
     status: RecruitState.RECRUITING,
   },
   {
     id: 2,
-    title: 'CX Manager의 모든 것과 커리어 설계',
-    intro: '제너럴의 스페셜리스트, CX Manager',
+    title: "CX Manager의 모든 것과 커리어 설계",
+    intro: "제너럴의 스페셜리스트, CX Manager",
     dday: 12,
-    program_start_date: 'YY.MM.DD',
-    program_finish_date: 'YY.MM.DD',
-    imageUrl: 'https://via.placeholder.com/149x106',
+    program_start_date: "YY.MM.DD",
+    program_finish_date: "YY.MM.DD",
+    imageUrl: "https://via.placeholder.com/149x106",
     status: RecruitState.RECRUITING,
   },
   {
     id: 3,
-    title: 'CX Manager의 모든 것과 커리어 설계',
-    intro: '제너럴의 스페셜리스트, CX Manager',
+    title: "CX Manager의 모든 것과 커리어 설계",
+    intro: "제너럴의 스페셜리스트, CX Manager",
     dday: 12,
-    program_start_date: 'YY.MM.DD',
-    program_finish_date: 'YY.MM.DD',
-    imageUrl: 'https://via.placeholder.com/149x106',
+    program_start_date: "YY.MM.DD",
+    program_finish_date: "YY.MM.DD",
+    imageUrl: "https://via.placeholder.com/149x106",
     status: RecruitState.ENDED,
   },
   {
     id: 4,
-    title: 'CX Manager의 모든 것과 커리어 설계',
-    intro: '제너럴의 스페셜리스트, CX Manager',
+    title: "CX Manager의 모든 것과 커리어 설계",
+    intro: "제너럴의 스페셜리스트, CX Manager",
     dday: 12,
-    program_start_date: 'YY.MM.DD',
-    program_finish_date: 'YY.MM.DD',
-    imageUrl: 'https://via.placeholder.com/149x106',
+    program_start_date: "YY.MM.DD",
+    program_finish_date: "YY.MM.DD",
+    imageUrl: "https://via.placeholder.com/149x106",
     status: RecruitState.RECRUITING,
   },
   {
     id: 5,
-    title: 'CX Manager의 모든 것과 커리어 설계',
-    intro: '제너럴의 스페셜리스트, CX Manager',
+    title: "CX Manager의 모든 것과 커리어 설계",
+    intro: "제너럴의 스페셜리스트, CX Manager",
     dday: 12,
-    program_start_date: 'YY.MM.DD',
-    program_finish_date: 'YY.MM.DD',
-    imageUrl: 'https://via.placeholder.com/149x106',
+    program_start_date: "YY.MM.DD",
+    program_finish_date: "YY.MM.DD",
+    imageUrl: "https://via.placeholder.com/149x106",
     status: RecruitState.ENDED,
   },
   {
     id: 6,
-    title: 'CX Manager의 모든 것과 커리어 설계',
-    intro: '제너럴의 스페셜리스트, CX Manager',
+    title: "CX Manager의 모든 것과 커리어 설계",
+    intro: "제너럴의 스페셜리스트, CX Manager",
     dday: 12,
-    program_start_date: 'YY.MM.DD',
-    program_finish_date: 'YY.MM.DD',
-    imageUrl: 'https://via.placeholder.com/149x106',
+    program_start_date: "YY.MM.DD",
+    program_finish_date: "YY.MM.DD",
+    imageUrl: "https://via.placeholder.com/149x106",
     status: RecruitState.RECRUITING,
   },
   {
     id: 7,
-    title: 'CX Manager의 모든 것과 커리어 설계',
-    intro: '제너럴의 스페셜리스트, CX Manager',
+    title: "CX Manager의 모든 것과 커리어 설계",
+    intro: "제너럴의 스페셜리스트, CX Manager",
     dday: 12,
-    program_start_date: 'YY.MM.DD',
-    program_finish_date: 'YY.MM.DD',
-    imageUrl: 'https://via.placeholder.com/149x106',
+    program_start_date: "YY.MM.DD",
+    program_finish_date: "YY.MM.DD",
+    imageUrl: "https://via.placeholder.com/149x106",
     status: RecruitState.ENDED,
   },
   {
     id: 8,
-    title: 'CX Manager의 모든 것과 커리어 설계',
-    intro: '제너럴의 스페셜리스트, CX Manager',
+    title: "CX Manager의 모든 것과 커리어 설계",
+    intro: "제너럴의 스페셜리스트, CX Manager",
     dday: 12,
-    program_start_date: 'YY.MM.DD',
-    program_finish_date: 'YY.MM.DD',
-    imageUrl: 'https://via.placeholder.com/149x106',
+    program_start_date: "YY.MM.DD",
+    program_finish_date: "YY.MM.DD",
+    imageUrl: "https://via.placeholder.com/149x106",
     status: RecruitState.ENDED,
   },
   {
     id: 9,
-    title: 'CX Manager의 모든 것과 커리어 설계',
-    intro: '제너럴의 스페셜리스트, CX Manager',
+    title: "CX Manager의 모든 것과 커리어 설계",
+    intro: "제너럴의 스페셜리스트, CX Manager",
     dday: 12,
-    program_start_date: 'YY.MM.DD',
-    program_finish_date: 'YY.MM.DD',
-    imageUrl: 'https://via.placeholder.com/149x106',
+    program_start_date: "YY.MM.DD",
+    program_finish_date: "YY.MM.DD",
+    imageUrl: "https://via.placeholder.com/149x106",
     status: RecruitState.ENDED,
   },
-
 ];
 
 const ListPage: React.FC = () => {
   const [programs, setPrograms] = useState<Program[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1); // 현재 페이지 상태
   const [postsPerPage] = useState<number>(8); // 한 페이지에 보여줄 아이템 수 설정
-
+  const [careerFilter, setCareearFilter] = useState<string[]>(["ALL"]);
+  const [typeFilter, setTypeFilter] = useState<string[]>([
+    "CHALLENGE",
+    "LIVECLASS",
+  ]);
 
   useEffect(() => {
-    const fetchPrograms = async () => {
-      const url = 'https://letmec.p-e.kr/program/list';
-      const res = await axios.get(url, {
-        params: {
-          careerTag: careerFilter,
-          programTypes: typeFilter,
-          page: 0,
-        },
-      });
-    };
-    fetchPrograms();
     setPrograms(dummyData);
   }, []);
 
@@ -142,15 +134,13 @@ const ListPage: React.FC = () => {
 
   return (
     <div>
-      <CareerFilter />
-      <TypeFilter />
-      {/* <div className='flex flex-wrap justify-center items-center'>
-        {programs.map((program) => (
-          <ProgramBox key={program.id} program={program} />
-        ))}
-      </div> */}
-      {/* Program 리스트 출력 */}
-      <div className='flex flex-wrap justify-center items-center'>
+      <CareerFilter
+        activeItem={careerFilter}
+        setActiveItem={setCareearFilter}
+      />
+      <TypeFilter activeItems={typeFilter} setActiveItems={setTypeFilter} />
+
+      <div className="flex flex-wrap justify-center items-center">
         {currentPrograms.map((program) => (
           <ProgramBox key={program.id} program={program} />
         ))}
@@ -158,15 +148,13 @@ const ListPage: React.FC = () => {
 
       {/* PageNation 컴포넌트에 필요한 props 전달 */}
       <PageNation
-        postsPerPage={postsPerPage}           // 한 페이지당 보여줄 프로그램 개수
-        totalPosts={programs.length}          // 전체 프로그램 개수
-        currentPage={currentPage}             // 현재 페이지
-        getCurrentPage={getCurrentPage}       // 페이지 변경 함수
+        postsPerPage={postsPerPage} // 한 페이지당 보여줄 프로그램 개수
+        totalPosts={programs.length} // 전체 프로그램 개수
+        currentPage={currentPage} // 현재 페이지
+        getCurrentPage={getCurrentPage} // 페이지 변경 함수
       />
     </div>
   );
-
 };
 
 export default ListPage;
-
