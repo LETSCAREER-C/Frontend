@@ -1,4 +1,4 @@
-import { useState, Dispatch } from 'react';
+import { Dispatch } from 'react';
 
 const items = [
   { label: { step: '', description: 'ALL' }, career_type: 'ALL' },
@@ -13,7 +13,6 @@ interface CareerFilterProps {
 }
 
 const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }) => {
-
   const handleClick = (careerType: string) => {
     if (careerType === 'ALL') {
       const isAllSelected = activeItem.includes('ALL');
@@ -21,8 +20,7 @@ const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }
         return; // 'ALL'이 이미 선택된 상태라면 아무것도 하지 않음
       }
       setActiveItem(['ALL']); // 'ALL' 클릭 시 activeItem은 'ALL'로만 설정
-    }
-    else {
+    } else {
       // 'ALL'이 선택된 상태에서 다른 버튼 클릭 시 'ALL'을 비활성화하고 개별 항목만 활성화
       const isAllSelected = activeItem.includes('all');
       if (isAllSelected) {
@@ -30,13 +28,13 @@ const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }
       } else {
         setActiveItem([careerType]); // 다른 필터 선택 시 선택된 필터만 활성화
       }
-
     }
   };
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full max-w-[350px] desktop:max-w-[612px] h-[50px] desktop:h-[68px] mt-[72px] desktop:mt-[90px] mb-[8px] gap-[8px] border-t border-t-[0.8px] border-transparent inline-flex justify-center text-sm bg-white desktop:px-[8px] desktop:py-[8px] px-[8px] py-[8px] ">
+      <div className="relative w-full max-w-[350px] md:max-w-[612px] h-[50px] desktop:h-[68px] mt-[72px] desktop:mt-[90px] mb-[8px] gap-[8px] border-t border-t-[0.8px] border-transparent 
+      inline-flex justify-center text-sm bg-white desktop:px-[8px] desktop:py-[8px] px-[8px] py-[8px] ">
         <section className="flex w-full h-full rounded-3xl overflow-hidden border justify-center items-center desktop:gap-[4px]">
           {items.map((item) => (
             <button
