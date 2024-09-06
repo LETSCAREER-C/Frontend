@@ -1,9 +1,9 @@
-
-import React, { useState } from "react";
-import RecruitTags, { RecruitState } from "../Filters/RecruitTags";
-import CareerTags from "../Filters/CareerTags";
-import NotifyButton from "../Buttons/NotifyButton";
-import { Program } from "../../types/Program";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import RecruitTags, { RecruitState } from '../Filters/RecruitTags';
+import CareerTags from '../Filters/CareerTags';
+import NotifyButton from '../Buttons/NotifyButton';
+import { Program } from '../../types/Program';
 
 interface ProgramBoxProps {
   program: Program;
