@@ -1,5 +1,5 @@
 import { Review } from '../../types/ProgramDetailType';
-import { Star } from '../../assets/svg';
+import { EmptyStar, Star } from '../../assets/svg';
 
 interface BEST_REVIEW {
   bestReview: Review[];
@@ -7,6 +7,8 @@ interface BEST_REVIEW {
 }
 
 export default function BestReview({ bestReview, programTitle }: BEST_REVIEW) {
+  const maxStars: number = 5;
+
   return (
     <section className="bg-Neutral-grayscale-90 py-10 ">
       <div className="mt-20 px-5 font-pretendard max-w-2xl mx-auto">
@@ -22,9 +24,21 @@ export default function BestReview({ bestReview, programTitle }: BEST_REVIEW) {
                   <p className="text-lg font-semibold text-gray-800">{bestreview.userName}</p>
                   <p className="text-sm font-medium text-gray-500">{programTitle}</p>
                 </div>
-                <div className="flex">
-                  {Array.from({ length: bestreview.grade }, (_, i) => (
-                    <Star key={i} className="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-[16px]" />
+
+                <div className="flex items-center gap-[4px]">
+                  {/* 별점 개수만큼 Star 렌더링 */}
+                  {[...Array(bestreview.grade)].map((_, index) => (
+                    <Star
+                      key={`star-${index}`}
+                      className="w-[22px] h-[22px] sm:w-[33px] sm:h-[33px] mb-[16px]"
+                    />
+                  ))}
+                  {/* 빈 별 채우기 */}
+                  {[...Array(maxStars - bestreview.grade)].map((_, index) => (
+                    <EmptyStar
+                      key={`empty-star-${index}`}
+                      className="w-[22px] h-[22px] sm:w-[33px] sm:h-[33px] mb-[16px]"
+                    />
                   ))}
                 </div>
               </div>
