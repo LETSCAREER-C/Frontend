@@ -31,7 +31,15 @@ export default function DetailPage() {
     <main>
       <DetailThumbnail />
       <BestReview bestReview={DUMMY_DATA.bestReviews} programTitle={DUMMY_DATA.title} />
-      <Tabs />
+      <Tabs
+        hookingArr={DUMMY_DATA.hooking}
+        programIntro={DUMMY_DATA.description}
+        lecturerIntro={DUMMY_DATA.lecturer}
+        curriculums={DUMMY_DATA.curriculum}
+        latestReviews={DUMMY_DATA.latestReviews}
+        recommendedPrograms={DUMMY_DATA.recommendedPrograms}
+        faq={DUMMY_DATA.faq}
+      />
     </main>
   );
 }

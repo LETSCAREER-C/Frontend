@@ -3,7 +3,7 @@ import CareerFilter from '../../components/Filters/CareerFilter';
 import ProgramBox from '../../components/PageNation/ProgramBox';
 import TypeFilter from '../../components/Filters/TypeFilter';
 import { RecruitState } from '../../components/Filters/RecruitTags';
-import axios from 'axios';
+import PageNation from '../../components/PageNation/PageNation';
 
 interface Program {
   id: number;
@@ -97,12 +97,24 @@ const dummyData: Program[] = [
     imageUrl: 'https://via.placeholder.com/149x106',
     status: RecruitState.ENDED,
   },
+  {
+    id: 9,
+    title: 'CX Manager의 모든 것과 커리어 설계',
+    intro: '제너럴의 스페셜리스트, CX Manager',
+    dday: 12,
+    program_start_date: 'YY.MM.DD',
+    program_finish_date: 'YY.MM.DD',
+    imageUrl: 'https://via.placeholder.com/149x106',
+    status: RecruitState.ENDED,
+  },
+
 ];
 
 const ListPage: React.FC = () => {
   const [programs, setPrograms] = useState<Program[]>([]);
-  const [typeFilter, setTypeFilter] = useState<string[]>(['CHALLENGE', 'LIVECLASS']);
-  const [careerFilter, setCareerFilter] = useState<string[]>(['ALL']);
+  const [currentPage, setCurrentPage] = useState<number>(1); // 현재 페이지 상태
+  const [postsPerPage] = useState<number>(8); // 한 페이지에 보여줄 아이템 수 설정
+
 
   useEffect(() => {
     const fetchPrograms = async () => {
@@ -117,17 +129,40 @@ const ListPage: React.FC = () => {
     };
     fetchPrograms();
     setPrograms(dummyData);
-  }, [careerFilter, typeFilter]);
+  }, []);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPrograms = programs.slice(indexOfFirstPost, indexOfLastPost); // 현재 페이지에 해당하는 프로그램 데이터만 보여줌
+
+  // 페이지 변경 함수 (PageNation에서 사용자가 페이지 번호 누르면 호출됨)
+  const getCurrentPage = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div>
-      <CareerFilter activeItem={careerFilter} setActiveItem={setCareerFilter} />
-      <TypeFilter activeItems={typeFilter} setActiveItems={setTypeFilter} />
-      <div className='flex flex-wrap justify-center items-center'>
+      <CareerFilter />
+      <TypeFilter />
+      {/* <div className='flex flex-wrap justify-center items-center'>
         {programs.map((program) => (
           <ProgramBox key={program.id} program={program} />
         ))}
+      </div> */}
+      {/* Program 리스트 출력 */}
+      <div className='flex flex-wrap justify-center items-center'>
+        {currentPrograms.map((program) => (
+          <ProgramBox key={program.id} program={program} />
+        ))}
       </div>
+
+      {/* PageNation 컴포넌트에 필요한 props 전달 */}
+      <PageNation
+        postsPerPage={postsPerPage}           // 한 페이지당 보여줄 프로그램 개수
+        totalPosts={programs.length}          // 전체 프로그램 개수
+        currentPage={currentPage}             // 현재 페이지
+        getCurrentPage={getCurrentPage}       // 페이지 변경 함수
+      />
     </div>
   );
 

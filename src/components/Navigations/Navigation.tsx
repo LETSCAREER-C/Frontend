@@ -28,7 +28,6 @@ const LogoDesk: React.FC = () => {
 };
 
 const Navigation: React.FC = () => {
-  // 반응형 pc 미구현
   const [menuToggle, setMenuToggle] = useState<boolean>(false);
 
   const toggleMenu = () => {
@@ -37,8 +36,8 @@ const Navigation: React.FC = () => {
 
   return (
     <>
-      <nav className="h-[60px] fixed top-0 left-0 w-full bg-white border-b-[1px] z-50 flex justify-between px-5 py-3 mx-auto md:h-[70px] md:px-8 md:py-3 md:mx-auto">
-        <div className="flex items-center justify-between w-full md: mx-auto">
+      <nav className="h-[60px] fixed top-0 left-0 w-full bg-white border-b-[1px] z-50 flex justify-between px-5 py-3 mx-auto md:h-[70px]">
+        <div className="flex items-center justify-between w-full md:mx-auto lg:w-[1200px]">
           <div className=" md:hidden ">
             <Logo />
           </div>

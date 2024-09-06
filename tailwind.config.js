@@ -74,6 +74,10 @@ module.exports = {
         'White-Opacity-008': '#FFFFFF14',
         'White-Opacity-005': '#FFFFFFd',
         'White-Opacity-0': '#D8D8D8',
+        'Positive-Green': '#1BC47D',
+        'Positive-Green-light': '#E3FAEB',
+        'Error': '#F64E39',
+        'Error-light': '#FFEBEB',
         'Point-Normal': '#DAFF7C',
       },
       fontFamily: {
