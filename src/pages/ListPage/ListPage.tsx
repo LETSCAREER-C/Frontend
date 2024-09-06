@@ -117,6 +117,17 @@ const ListPage: React.FC = () => {
 
 
   useEffect(() => {
+    const fetchPrograms = async () => {
+      const url = 'https://letmec.p-e.kr/program/list';
+      const res = await axios.get(url, {
+        params: {
+          careerTag: careerFilter,
+          programTypes: typeFilter,
+          page: 0,
+        },
+      });
+    };
+    fetchPrograms();
     setPrograms(dummyData);
   }, []);
 
@@ -154,6 +165,8 @@ const ListPage: React.FC = () => {
       />
     </div>
   );
-}
+
+};
 
 export default ListPage;
+

@@ -78,6 +78,7 @@ module.exports = {
         'Positive-Green-light': '#E3FAEB',
         'Error': '#F64E39',
         'Error-light': '#FFEBEB',
+        'Point-Normal': '#DAFF7C',
       },
       fontFamily: {
         pretendard: ['Pretendard'],
