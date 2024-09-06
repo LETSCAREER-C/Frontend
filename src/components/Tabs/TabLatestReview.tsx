@@ -59,7 +59,7 @@ export default function TabLatestReview({ reviews }: Props) {
 
   return (
     <div
-      className="relative w-full max-w-3xl mx-auto"
+      className="relative w-full mx-auto"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

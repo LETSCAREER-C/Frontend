@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 
 const Footer: FunctionComponent = () => {
   return (
-    <footer className=" w-full bg-neutral-200 font-pretendard px-5 pb-6 pt-10 lg:px-10 xl:px-28">
+    <footer className=" w-full bg-neutral-200 font-pretendard px-5 pb-6 pt-10 lg:px-10 xl:px-24">
       <div className="flex flex-col-reverse justify-between sm:flex-row w-full max-w-6xl mx-auto">
         {/* 왼쪽 섹션: 로고와 사업자 정보 */}
         <div className="flex flex-col gap-5 mt-[52px] lg:w-1/3 md:mt-0 px-5">

@@ -59,7 +59,7 @@ export const DUMMY_DATA: DETAILDATA = {
     {
       templateType: 'blue',
       preTitle: '학습부터 미션 수행까지',
-      title: '온라인 대시보드를 통해\n편하게 진행해요',
+      title: '온라인 대시보드를 통해\n 편하게 진행해요',
       hookingImageList: [
         {
           imageUrl: '대시보드 이미지',
