@@ -19,9 +19,9 @@ export default function TabLecturerIntro({ lecturerData }: Props) {
   }
 
   return (
-    <section className="p-8 bg-white rounded-lg shadow-md max-w-2xl mx-auto my-8">
+    <section className="mx-auto px-4 text-center font-pretendard whitespace-pre-line">
       {/* Title Section */}
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">
+      <h2 className="text-2xl font-bold text-gray-800 mt-2 mb-6">
         자기소개서 전문가 {lecturerData.name}
       </h2>
 
@@ -30,21 +30,21 @@ export default function TabLecturerIntro({ lecturerData }: Props) {
         <img
           src={lecturerData.profileImage}
           alt={lecturerData.name}
-          className="w-48 h-48 object-cover rounded-lg shadow-md"
+          className="w-48 h-48 object-cover"
         />
       </div>
 
       {/* Name and Nickname */}
-      <div className="text-center mb-4">
-        <p className="text-lg font-semibold text-gray-800">{lecturerData.name}</p>
-        <p className="text-sm text-gray-500">{lecturerData.nickName}</p>
+      <div className="flex justify-center items-baseline text-center text-Neutral-grayscale-10 mb-4">
+        <p className="text-xl font-semibold mr-2">{lecturerData.name}</p>
+        <p className="text-xs font-semibold">{lecturerData.nickName}</p>
       </div>
 
       {/* Career */}
-      <p className="text-sm text-gray-600 mb-6 whitespace-pre-line">{lecturerData.career}</p>
+      <p className="text-sm text-Neutral-grayscale-30 mb-6">{lecturerData.career}</p>
 
       {/* Introduction */}
-      <p className="text-sm text-gray-600">{lecturerData.intro}</p>
+      <p className="text-sm text-Neutral-grayscale-30">{lecturerData.intro}</p>
     </section>
   );
 }

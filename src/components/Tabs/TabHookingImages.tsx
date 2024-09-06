@@ -56,13 +56,13 @@ export default function TabHookingImages({ hookingData }: Props) {
   };
 
   return (
-    <article className="w-full p-6 mx-auto bg-Neutral-grayscale-100 font-pretendard">
+    <article className="w-full p-6 mx-auto bg-Neutral-grayscale-100 font-pretendard whitespace-pre-line">
       <div className="my-20 mx-auto text-center">
         {hookingData.preTitle && (
           <p className=" text-Primary-100 text-lg font-medium">{hookingData.preTitle}</p>
         )}
         {hookingData.title && (
-          <h2 className="text-Neutral-grayscale-0 text-2xl font-bold mt-2 mb-6 whitespace-pre-line">
+          <h2 className="text-Neutral-grayscale-0 text-2xl font-bold mt-2 mb-6">
             {hookingData.title}
           </h2>
         )}

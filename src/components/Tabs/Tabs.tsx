@@ -118,7 +118,7 @@ export default function Tabs({
         ref={tabRef}
         className={`h-[74px] z-10 bg-white duration-300 ${isSticky ? 'sticky top-[60px]' : ''}`}
       >
-        <nav className="flex justify-around">
+        <nav className="flex justify-around font-pretendard">
           <button
             className={`h-[74px] relative font-semibold text-lg ${activeTab === 'programIntro' ? 'font-bold border-b-4 border-Primary-80' : 'text-gray-400'}`}
             onClick={() => scrollToSection(programIntroRef, 'programIntro')}
@@ -159,37 +159,54 @@ export default function Tabs({
       </div>
 
       {/* 탭 메뉴와 연결된 섹션들 */}
-      <section ref={programIntroRef} id="programIntro">
-        <h3 className="font-pretendard text-Primary-100 mx-auto">프로그램 소개</h3>
+      <section ref={programIntroRef} id="programIntro" className="bg-Primary-10 w-full py-20">
+        <h3 className="font-pretendard font-medium text-lg text-Primary-100 text-center">
+          프로그램 소개
+        </h3>
         {programIntro.map((introData, i) => {
           return <TabDescription key={i} introData={introData} />;
         })}
       </section>
 
-      <section ref={lecturerIntroRef} id="lecturerIntro">
-        <h3 className="font-pretendard text-Primary-100 mx-auto">연사 소개</h3>
+      <section
+        ref={lecturerIntroRef}
+        id="lecturerIntro"
+        className="bg-Neutral-grayscale-100 w-full py-20"
+      >
+        <h3 className="font-pretendard font-medium text-lg text-Primary-100 text-center">
+          연사 소개
+        </h3>
         <TabLecturerIntro lecturerData={lecturerIntro} />
       </section>
 
-      <section ref={curriculumRef} id="curriculum">
-        <h3 className="font-pretendard text-Primary-100 mx-auto">커리큘럼 소개</h3>
+      <section ref={curriculumRef} id="curriculum" className="bg-Neutral-grayscale-90 w-full py-20">
+        <h3 className="font-pretendard font-medium text-lg text-Primary-100 text-center">
+          커리큘럼 소개
+        </h3>
+        <p className="font-pretendard text-center font-bold text-2xl mt-2 mb-[72px]">
+          이런 것을 배웁니다
+        </p>
         {curriculums.map((curriculum, i) => {
           return <TabCurriculum key={i} curriculum={curriculum} />;
         })}
       </section>
 
-      <section ref={reviewsRef} id="reviews">
-        <h3 className="font-pretendard text-Primary-100 mx-auto">강의 후기</h3>
+      <section ref={reviewsRef} id="reviews" className="bg-Neutral-grayscale-90 w-full py-20">
+        <h3 className="font-pretendard font-medium text-lg text-Primary-100 text-center">
+          강의 후기
+        </h3>
         <TabLatestReview reviews={latestReviews} />
       </section>
 
-      <section>
-        <h3 className="font-pretendard text-Primary-100 mx-auto">추천 강좌</h3>
+      <section className="bg-Neutral-grayscale-100 w-full py-20">
+        <h3 className="font-pretendard font-medium text-lg text-Primary-100 text-center">
+          추천 강좌
+        </h3>
         <TabSuggest recommendedPrograms={recommendedPrograms} />
       </section>
 
-      <section ref={faqRef} id="faq">
-        <h3 className="font-pretendard text-Primary-100 mx-auto">FAQ</h3>
+      <section ref={faqRef} id="faq" className="bg-Neutral-grayscale-100 w-full py-20">
+        <h3 className="font-pretendard font-medium text-lg text-Primary-100 text-center">FAQ</h3>
         <TabFAQ faqList={faq} />
       </section>
     </section>
