@@ -1,22 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RecommendedProgram } from '../../types/ProgramDetailType';
+import axios from 'axios';
 
 interface Props {
   recommendedPrograms: RecommendedProgram[];
 }
 
 export default function TabSuggest({ recommendedPrograms }: Props) {
-  const [activeTab, setActiveTab] = useState('탐색'); // 현재 선택된 탭 상태
+  console.log('추천 프로그램 목록', recommendedPrograms);
+  const [activeTab, setActiveTab] = useState('CAREER_EXPLORE'); // 현재 선택된 탭 상태
 
   // 각 탭별 프로그램 필터링
   const filteredPrograms = recommendedPrograms.filter((program) => program.tag === activeTab);
+
+  // useEffect(() => {
+  //   const fetchRecommendedPrograms = async () => {
+  //     try {
+  //       // const res = await axios.get(`https://letmec.p-e.kr/program/${programId}`);
+  //       const res = await axios.get(`http://localhost:9000/program/${programId}/${activeTab}`);
+  //     } catch (error) {
+  //       console.log('에러 발생', error);
+  //     }
+  //   };
+  //   fetchRecommendedPrograms();
+  // }, [activeTab]);
 
   return (
     <section className="mx-auto px-4 max-w-xl font-pretendard">
       <p className="text-center font-bold text-2xl mt-1 mb-[72px]">이런 강좌는 어떠세요?</p>
 
       <div className="flex justify-around space-x-8 mb-[72px] w-[350px] mx-auto">
-        {['탐색', '서류', '면접'].map((tag, index) => (
+        {['CAREER_EXPLORE', 'DOCUMENT_PREPARE', 'INTERVIEW_PREPARE'].map((tag, index) => (
           <div
             key={tag}
             onClick={() => setActiveTab(tag)}
@@ -34,7 +48,11 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
             <p
               className={`font-semibold text-sm ${activeTab === tag ? 'text-Neutral-grayscale-10' : 'text-Neutral-grayscale-70'}`}
             >
-              {tag === '탐색' ? '커리어 탐색' : tag === '서류' ? '서류 준비' : '면접 준비'}
+              {tag === 'CAREER_EXPLORE'
+                ? '커리어 탐색'
+                : tag === 'DOCUMENT_PREPARE'
+                  ? '서류 준비'
+                  : '면접 준비'}
             </p>
           </div>
         ))}

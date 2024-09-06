@@ -61,7 +61,7 @@ export interface Review {
   userName: string;
   content: string;
   grade: number;
-  createAt: Date;
+  date: Date;
 }
 
 // 추천 프로그램 타입 정의
