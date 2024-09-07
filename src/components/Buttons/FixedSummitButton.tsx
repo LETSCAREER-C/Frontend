@@ -1,5 +1,7 @@
-import { RecruitState } from '../../components/Filters/RecruitTags';
-import { Program } from '../../types/Program';
+
+import { RecruitState } from "../../components/Filters/RecruitTags";
+import { Program } from "../../types/Program";
+
 
 // 프로그램 이름 & 리크루팅 여부 & 신청 마감 데드라인을 불러와야 함!
 
@@ -8,6 +10,7 @@ interface SummitBtnProps {
 }
 
 const FixedSummitButton: React.FC<SummitBtnProps> = ({ program }) => {
+
   const handleClick = () => {
     console.log('클릭');
 
@@ -20,6 +23,7 @@ const FixedSummitButton: React.FC<SummitBtnProps> = ({ program }) => {
   };
 
   return (
+
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[340px] h-[108px] p-[10px] bg-Neutral-grayscale-100 rounded-xl font-Pretendard shadow-lg">
       <div className="flex justify-center items-center gap-[12px]">
         {program.status === RecruitState.ENDED ? (

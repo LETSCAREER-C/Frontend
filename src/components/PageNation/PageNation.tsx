@@ -1,20 +1,21 @@
-import React from "react";
+
+import React from 'react';
+
 
 interface PageNationProps {
-  postsPerPage: number;
-  totalPosts: number;
   currentPage: number; // 사용자가 선택한 페이지
   // 사용자가 페이지 번호를 클릭했을 때 호출되는 함수, 선택된 페이지 번호를 인자로 받음, 해당 페이지로 데이터를 변경
+  totalPages: number;
   getCurrentPage: (pageNumber: number) => void;
 }
 
 const PageNation: React.FC<PageNationProps> = ({
-  postsPerPage,
-  totalPosts,
+  totalPages,
   currentPage,
   getCurrentPage,
 }) => {
   const pageNumbers: number[] = []; // 배열을 생성한 후, 반복문을 사용하여 배열의 각 요소(페이지 번호)를 렌더링
+
 
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
@@ -46,12 +47,17 @@ const PageNation: React.FC<PageNationProps> = ({
     getCurrentPage(totalPages);
   };
 
-  // 선택된 페이지 강조, 페이지 범위 표시 (필요에 따라 조정 가능)
-  const pageRange = pageNumbers.slice(
-    Math.max(0, currentPage - 3),
-    Math.min(totalPages, currentPage + 2)
-  );
-
+  let pageRange;
+  if (totalPages <= 5) {
+    // 페이지가 5개 이하일 경우, 전체 페이지 번호를 표시
+    pageRange = pageNumbers;
+  } else {
+    // 페이지가 5개 이상일 경우, 범위 계산
+    pageRange = pageNumbers.slice(
+      Math.max(0, currentPage - 2),
+      Math.min(totalPages, currentPage + 1)
+    );
+  }
   return (
     <nav className="flex justify-center mt-8 mb-[100px]">
       <ul className="inline-flex overflow-hidden">

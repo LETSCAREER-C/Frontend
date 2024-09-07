@@ -23,8 +23,7 @@
     "react-router": "^6.26.1",
     "react-router-dom": "^6.26.1",
     "undici": "^6.19.8",
-    "zod": "^3.23.8",
-    "zustand": "^4.5.5"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
