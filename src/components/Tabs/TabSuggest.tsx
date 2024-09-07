@@ -1,4 +1,6 @@
+
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { RecommendedProgram } from '../../types/ProgramDetailType';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -10,6 +12,7 @@ interface Props {
 export default function TabSuggest({ recommendedPrograms }: Props) {
   const [activeTab, setActiveTab] = useState('CAREER_EXPLORE'); // 현재 선택된 탭 상태
   const { programId } = useParams<{ programId: string }>();
+
   // 각 탭별 프로그램 필터링
   const [filteredPrograms, setFilteredPrograms] = useState<RecommendedProgram[]>([]);
 
@@ -36,7 +39,10 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
         {['CAREER_EXPLORE', 'DOCUMENT_PREPARE', 'INTERVIEW_PREPARE'].map((tag, index) => (
           <div
             key={tag}
-            onClick={() => setActiveTab(tag)}
+            onClick={() => {
+              setActiveTab(tag);
+              navigate('/program/1');
+            }}
             className={`text-center cursor-pointer ${
               activeTab === tag
                 ? 'text-Neutral-grayscale-10 border-b-2 border-Primary-100'

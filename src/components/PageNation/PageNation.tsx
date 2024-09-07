@@ -1,4 +1,6 @@
+
 import React from 'react';
+
 
 interface PageNationProps {
   currentPage: number; // 사용자가 선택한 페이지
@@ -13,6 +15,9 @@ const PageNation: React.FC<PageNationProps> = ({
   getCurrentPage,
 }) => {
   const pageNumbers: number[] = []; // 배열을 생성한 후, 반복문을 사용하여 배열의 각 요소(페이지 번호)를 렌더링
+
+
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
@@ -53,7 +58,6 @@ const PageNation: React.FC<PageNationProps> = ({
       Math.min(totalPages, currentPage + 1)
     );
   }
-
   return (
     <nav className="flex justify-center mt-8 mb-[100px]">
       <ul className="inline-flex overflow-hidden">
