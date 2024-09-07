@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { RecommendedProgram } from '../../types/ProgramDetailType';
@@ -12,6 +11,7 @@ interface Props {
 export default function TabSuggest({ recommendedPrograms }: Props) {
   const [activeTab, setActiveTab] = useState('CAREER_EXPLORE'); // 현재 선택된 탭 상태
   const { programId } = useParams<{ programId: string }>();
+  const navigate = useNavigate();
 
   // 각 탭별 프로그램 필터링
   const [filteredPrograms, setFilteredPrograms] = useState<RecommendedProgram[]>([]);
@@ -71,7 +71,7 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
       <div className="grid gap-4">
         {filteredPrograms.slice(0, 3).map((program) => (
           <div
-            key={program.programId}
+            key={program.recommendedProgramId}
             className="bg-white rounded-lg shadow p-4 mx-auto w-[276px] font-pretendard whitespace-pre-line"
           >
             <img

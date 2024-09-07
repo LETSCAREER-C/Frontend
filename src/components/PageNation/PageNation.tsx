@@ -1,6 +1,4 @@
-
 import React from 'react';
-
 
 interface PageNationProps {
   currentPage: number; // 사용자가 선택한 페이지
@@ -9,15 +7,8 @@ interface PageNationProps {
   getCurrentPage: (pageNumber: number) => void;
 }
 
-const PageNation: React.FC<PageNationProps> = ({
-  totalPages,
-  currentPage,
-  getCurrentPage,
-}) => {
+const PageNation: React.FC<PageNationProps> = ({ totalPages, currentPage, getCurrentPage }) => {
   const pageNumbers: number[] = []; // 배열을 생성한 후, 반복문을 사용하여 배열의 각 요소(페이지 번호)를 렌더링
-
-
-  const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
@@ -55,9 +46,10 @@ const PageNation: React.FC<PageNationProps> = ({
     // 페이지가 5개 이상일 경우, 범위 계산
     pageRange = pageNumbers.slice(
       Math.max(0, currentPage - 2),
-      Math.min(totalPages, currentPage + 1)
+      Math.min(totalPages, currentPage + 1),
     );
   }
+
   return (
     <nav className="flex justify-center mt-8 mb-[100px]">
       <ul className="inline-flex overflow-hidden">
@@ -65,10 +57,10 @@ const PageNation: React.FC<PageNationProps> = ({
         <li>
           <button
             onClick={handleFirst}
-            className={`px-4 py-2 ${currentPage === 1 ? "text-Neutral-grayscale-75" : "text-Black_Opacity-100"}`}
+            className={`px-4 py-2 ${currentPage === 1 ? 'text-Neutral-grayscale-75' : 'text-Black_Opacity-100'}`}
             disabled={currentPage === 1} // 첫 페이지에서는 비활성화
           >
-            {"<<"}
+            {'<<'}
           </button>
         </li>
 
@@ -76,10 +68,10 @@ const PageNation: React.FC<PageNationProps> = ({
         <li>
           <button
             onClick={handlePrevious}
-            className={`px-4 py-2 ${currentPage === 1 ? "text-Neutral-grayscale-75" : "text-Black_Opacity-100"}`}
+            className={`px-4 py-2 ${currentPage === 1 ? 'text-Neutral-grayscale-75' : 'text-Black_Opacity-100'}`}
             disabled={currentPage === 1} // 첫 페이지에서는 비활성화
           >
-            {"<"}
+            {'<'}
           </button>
         </li>
 
@@ -88,7 +80,7 @@ const PageNation: React.FC<PageNationProps> = ({
           <li key={number}>
             <button
               onClick={() => getCurrentPage(number)}
-              className={`px-4 py-2 ${currentPage === number ? "bg-Primary-100 text-white rounded-full" : "text-Black_Opacity-100"}`}
+              className={`px-4 py-2 ${currentPage === number ? 'bg-Primary-100 text-white rounded-full' : 'text-Black_Opacity-100'}`}
             >
               {number}
             </button>
@@ -99,10 +91,10 @@ const PageNation: React.FC<PageNationProps> = ({
         <li>
           <button
             onClick={handleNext}
-            className={`px-4 py-2 ${currentPage === totalPages ? "text-Neutral-grayscale-75" : "text-Black_Opacity-100"}`}
+            className={`px-4 py-2 ${currentPage === totalPages ? 'text-Neutral-grayscale-75' : 'text-Black_Opacity-100'}`}
             disabled={currentPage === totalPages} // 마지막 페이지에서는 비활성화
           >
-            {">"}
+            {'>'}
           </button>
         </li>
 
@@ -110,10 +102,10 @@ const PageNation: React.FC<PageNationProps> = ({
         <li>
           <button
             onClick={handleLast}
-            className={`px-4 py-2 ${currentPage === totalPages ? "text-Neutral-grayscale-75" : "text-Black_Opacity-100"}`}
+            className={`px-4 py-2 ${currentPage === totalPages ? 'text-Neutral-grayscale-75' : 'text-Black_Opacity-100'}`}
             disabled={currentPage === totalPages} // 마지막 페이지에서는 비활성화
           >
-            {">>"}
+            {'>>'}
           </button>
         </li>
       </ul>
