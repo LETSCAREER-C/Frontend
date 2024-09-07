@@ -14,14 +14,14 @@ const ListPage: React.FC = () => {
   const [careerFilter, setCareearFilter] = useState<string[]>(['ALL']);
   const [typeFilter, setTypeFilter] = useState<string[]>(['CHALLENGE', 'LIVECLASS']);
   const [totalPages, setTotalPages] = useState<number>(0);
-  // 커리어 탭바를 누를 때, 정보를 요청하는 페이지가 1에서 시작하도록, 페이지 초기화
+
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
         const careerTag = careerFilter.includes('ALL') ? 'ALL' : careerFilter.join(',');
         const typeTags = typeFilter.map((type) => `programTypes=${type}`).join('&');
         const res = await axios.get(
-          `https://letmec.p-e.kr/program/list?careerTag=${careerTag}&${typeTags}&page=${currentPage - 1}`,
+          `https://letmec.p-e.kr/program/list?careerTag=${careerTag}&${typeTags}&page=0`,
         );
         setPrograms(res.data.result.programDtos);
         setTotalPages(res.data.result.totalPageCount);
@@ -31,10 +31,30 @@ const ListPage: React.FC = () => {
         setCurrentPrograms([]);
       }
     };
-    ``
-    fetchPrograms();
-  }, [careerFilter, typeFilter, currentPage]);
 
+    fetchPrograms();
+  }, [careerFilter, typeFilter]);
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const careerTag = careerFilter.includes('ALL') ? 'ALL' : careerFilter.join(',');
+        const typeTags = typeFilter.map((type) => `programTypes=${type}`).join('&');
+        const res = await axios.get(
+          `https://letmec.p-e.kr/program/list?careerTag=${careerTag}&${typeTags}&page=${currentPage - 1}`,
+        );
+        console.log(res);
+        setPrograms(res.data.result.programDtos);
+        setTotalPages(res.data.result.totalPageCount);
+      } catch (error) {
+        console.log('에러 발생', error);
+        setPrograms([]);
+        setCurrentPrograms([]);
+      }
+    };
+
+    fetchPrograms();
+  }, [currentPage]);
 
   useEffect(() => {
     const filterAndSlicePrograms = () => {

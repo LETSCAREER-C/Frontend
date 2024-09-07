@@ -42,14 +42,16 @@ const Navigation: React.FC = () => {
             <Logo />
           </div>
           <div className="hidden md:flex items-center font-pretendard font-semibold text-neut-60">
-            <LogoDesk />
-            <Link to="https://www.letscareer.co.kr/about" className="ml-9">
+            <Link to="/listPage">
+              <LogoDesk />
+            </Link>
+            <Link to="/listPage" className="ml-9">
               렛츠커리어 스토리
             </Link>
-            <Link to="https://www.letscareer.co.kr/program" className="ml-9">
+            <Link to="/listPage" className="ml-9">
               프로그램
             </Link>
-            <Link to="https://www.letscareer.co.kr/blog/list" className="ml-9">
+            <Link to="/listPage" className="ml-9">
               블로그
             </Link>
           </div>
@@ -102,7 +104,7 @@ const Navigation: React.FC = () => {
                   <div className="justify-center items-center gap-2.5 flex">
                     {/* 라우팅 수정 필요 */}
                     <Link
-                      to="https://www.letscareer.co.kr/program"
+                      to="/listPage"
                       className="text-[#27272d] text-lg font-bold font-['Pretendard Variable'] leading-relaxed"
                     >
                       프로그램
