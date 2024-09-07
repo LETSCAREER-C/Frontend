@@ -21,6 +21,26 @@ const ListPage: React.FC = () => {
         const careerTag = careerFilter.includes('ALL') ? 'ALL' : careerFilter.join(',');
         const typeTags = typeFilter.map((type) => `programTypes=${type}`).join('&');
         const res = await axios.get(
+          `https://letmec.p-e.kr/program/list?careerTag=${careerTag}&${typeTags}&page=0`,
+        );
+        setPrograms(res.data.result.programDtos);
+        setTotalPages(res.data.result.totalPageCount);
+      } catch (error) {
+        console.log('에러 발생', error);
+        setPrograms([]);
+        setCurrentPrograms([]);
+      }
+    };
+
+    fetchPrograms();
+  }, [careerFilter, typeFilter]);
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const careerTag = careerFilter.includes('ALL') ? 'ALL' : careerFilter.join(',');
+        const typeTags = typeFilter.map((type) => `programTypes=${type}`).join('&');
+        const res = await axios.get(
           `https://letmec.p-e.kr/program/list?careerTag=${careerTag}&${typeTags}&page=${currentPage - 1}`,
         );
         console.log(res);
@@ -34,7 +54,7 @@ const ListPage: React.FC = () => {
     };
 
     fetchPrograms();
-  }, [careerFilter, typeFilter, currentPage]);
+  }, [currentPage]);
 
   useEffect(() => {
     const filterAndSlicePrograms = () => {
