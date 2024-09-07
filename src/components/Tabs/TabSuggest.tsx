@@ -1,29 +1,32 @@
 import { useEffect, useState } from 'react';
 import { RecommendedProgram } from '../../types/ProgramDetailType';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 interface Props {
   recommendedPrograms: RecommendedProgram[];
 }
 
 export default function TabSuggest({ recommendedPrograms }: Props) {
-  console.log('추천 프로그램 목록', recommendedPrograms);
   const [activeTab, setActiveTab] = useState('CAREER_EXPLORE'); // 현재 선택된 탭 상태
-
+  const { programId } = useParams<{ programId: string }>();
   // 각 탭별 프로그램 필터링
-  const filteredPrograms = recommendedPrograms.filter((program) => program.tag === activeTab);
+  const [filteredPrograms, setFilteredPrograms] = useState<RecommendedProgram[]>([]);
 
-  // useEffect(() => {
-  //   const fetchRecommendedPrograms = async () => {
-  //     try {
-  //       // const res = await axios.get(`https://letmec.p-e.kr/program/${programId}`);
-  //       const res = await axios.get(`http://localhost:9000/program/${programId}/${activeTab}`);
-  //     } catch (error) {
-  //       console.log('에러 발생', error);
-  //     }
-  //   };
-  //   fetchRecommendedPrograms();
-  // }, [activeTab]);
+  useEffect(() => {
+    const fetchRecommendedPrograms = async () => {
+      try {
+        // const res = await axios.get(`https://letmec.p-e.kr/program/${programId}`);
+        const res = await axios.get(
+          `http://localhost:9000/program/${programId}/recommended/${activeTab}`,
+        );
+        setFilteredPrograms(res.data.result.recommendedPrograms);
+      } catch (error) {
+        console.log('에러 발생', error);
+      }
+    };
+    fetchRecommendedPrograms();
+  }, [activeTab]);
 
   return (
     <section className="mx-auto px-4 max-w-xl font-pretendard">

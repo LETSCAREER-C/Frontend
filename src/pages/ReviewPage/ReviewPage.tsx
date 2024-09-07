@@ -6,6 +6,7 @@ import SortReview from '../../components/Review/SortReview';
 import { dummyData_review } from '../../assets/dummy/ReviewPageDummy';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export interface Review {
   id: number;
@@ -25,6 +26,7 @@ const ReviewPage: React.FC = () => {
   const [sortedReviews, setSortedReviews] = useState<Review[]>([]);
   const { programId } = useParams<{ programId: string }>();
   const [isMoblie, setIsMoblie] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -53,7 +55,8 @@ const ReviewPage: React.FC = () => {
   };
 
   const handleBackClick = () => {
-    window.history.back();
+    // window.history.back();
+    navigate(`/program/${programId}`);
   };
 
   return (

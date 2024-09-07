@@ -23,6 +23,7 @@ const ListPage: React.FC = () => {
         const res = await axios.get(
           `https://letmec.p-e.kr/program/list?careerTag=${careerTag}&${typeTags}&page=${currentPage - 1}`,
         );
+        console.log(res);
         setPrograms(res.data.result.programDtos);
         setTotalPages(res.data.result.totalPageCount);
       } catch (error) {

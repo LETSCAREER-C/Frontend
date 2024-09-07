@@ -20,6 +20,16 @@ interface ReviewProps {
 const ReviewBox: React.FC<ReviewProps> = ({ review }) => {
   const maxStars = 5;
 
+  const getStatus = (status: string) => {
+    if (status === 'EMPLOYED') {
+      return 'hired';
+    } else if (status === 'UNEMPLOYED') {
+      return 'rejected';
+    } else {
+      return 'undecided';
+    }
+  };
+
   return (
     <article
       key={review.id}
@@ -51,7 +61,7 @@ const ReviewBox: React.FC<ReviewProps> = ({ review }) => {
         <div className="text-[14px] ">{review.major}</div>
         <div className="flex gap-1.5 justify-start">
           <div className="text-[16px] font-medium ">{review.userName}</div>
-          <JobStatusIndicator status={review.status === '합격' ? 'hired' : 'rejected'} />
+          <JobStatusIndicator status={getStatus(review.status)} />
         </div>
         <div className="text-[16px] mt-[16px]">{review.content}</div>
       </section>
