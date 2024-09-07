@@ -13,7 +13,6 @@ export interface Hooking {
   order?: number;
   templateType: string;
   hookingImageList?: HookingImage[];
-  imageTypeImageUrl?: string;
 }
 
 // 설명 이미지 타입 정의
@@ -30,7 +29,6 @@ export interface Description {
   templateType: string;
   descriptionImages?: DescriptionImage[];
   hashtags?: Hashtag[];
-  imageTypeImageUrl?: string;
 }
 
 // 해시태그 타입 정의
@@ -42,9 +40,9 @@ export interface Hashtag {
 // 강사 타입 정의 -> 별명 추가
 export interface Lecturer {
   name: string;
-  nickName: string;
+  nickname: string; // 수정됨
   career: string;
-  intro: string;
+  introduce: string; // 수정됨
   profileImage: string;
   templateType: string;
 }
@@ -58,15 +56,21 @@ export interface Curriculum {
 
 // 리뷰 타입 정의 -> 리뷰 작성 시간
 export interface Review {
+  programName: string;
   userName: string;
+  title: string;
   content: string;
+  dreamWorkField: string;
+  major: string;
+  year: number;
+  status: string;
+  date: string; // Date 배열 형태로 처리
   grade: number;
-  date: Date;
 }
 
 // 추천 프로그램 타입 정의
 export interface RecommendedProgram {
-  programId: number;
+  recommendedProgramId: number; // 수정됨
   tag: string;
   title: string;
   intro: string;
@@ -86,7 +90,8 @@ export interface FAQ {
 // 메인 객체 타입 정의
 export interface DETAILDATA {
   title: string;
-  tag: string;
+  stepType: string; // tag가 없어서 대체
+  programType: string;
   recruitEndDate: string;
   pcMainImageUrl: string;
   mobileMainImageUrl: string;

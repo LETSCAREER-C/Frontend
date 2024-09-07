@@ -4,7 +4,7 @@ import ProgramBox from '../../components/PageNation/ProgramBox';
 import TypeFilter from '../../components/Filters/TypeFilter';
 import { RecruitState } from '../../components/Filters/RecruitTags';
 import PageNation from '../../components/PageNation/PageNation';
-import { Program } from '../../types/Program';
+import { Program } from '../../types/ProgramListType';
 import axios from 'axios';
 
 const ListPage: React.FC = () => {

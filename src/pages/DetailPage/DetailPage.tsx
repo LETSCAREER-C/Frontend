@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { DETAILDATA } from '../../types/ProgramDetailType';
-import { DUMMY_DATA, DATA_FOR_FIXESBTN } from '../../assets/dummy/DetailPageDummy';
+import { DUMMY_DATA } from '../../assets/dummy/DetailPageDummy';
 import FixedSummitButton from '../../components/Buttons/FixedSummitButton';
 
 export default function DetailPage() {
@@ -15,7 +15,6 @@ export default function DetailPage() {
   useEffect(() => {
     const fetchDetail = async () => {
       try {
-        // const res = await axios.get(`https://letmec.p-e.kr/program/${programId}`);
         const res = await axios.get(`https://letmec.p-e.kr/program/${programId}`);
         setDetailData(res.data.result);
       } catch (error) {
@@ -45,7 +44,7 @@ export default function DetailPage() {
           faq={detailData.faq || DUMMY_DATA.faq}
         />
       )}
-
+      {/* <FixedSummitButton program={} /> */}
     </main>
   );
 }
