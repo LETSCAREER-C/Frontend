@@ -41,7 +41,7 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
             key={tag}
             onClick={() => {
               setActiveTab(tag);
-              navigate('/program/1');
+              navigate(`/program/${programId}`);
             }}
             className={`text-center cursor-pointer ${
               activeTab === tag
