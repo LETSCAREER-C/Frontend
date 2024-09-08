@@ -33,7 +33,7 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => {
-        navigate('/program/1');
+        navigate(`/program/${program.programId}`);
       }}
     >
       {program.recruitStatus === RecruitState.ENDED && (
