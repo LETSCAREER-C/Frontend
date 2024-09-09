@@ -7,7 +7,7 @@ import {
   Lecturer,
   Review,
 } from '../../types/ProgramDetailType';
-import TabHookingImages from './TabHookingImages';
+// import TabHookingImages from './TabHookingImages';
 import TabDescription from './TabDescription';
 import TabLecturerIntro from './TabLecturerIntro';
 import TabCurriculum from './TabCurriculum';
@@ -25,7 +25,6 @@ interface Props {
 }
 
 export default function Tabs({
-  hookingArr,
   programIntro,
   lecturerIntro,
   curriculums,
