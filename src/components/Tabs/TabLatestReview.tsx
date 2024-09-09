@@ -109,7 +109,9 @@ export default function TabLatestReview({ reviews }: Props) {
                 {/* 프로그램 이름 */}
                 <p className="text-sm font-semibold mb-1">이력서&자기소개서 완성 1기</p>
                 {/* 작성 시간 */}
-                <p className="text-xs text-gray-500 mb-2">{review.createAt.toLocaleDateString()}</p>
+                <p className="text-xs text-gray-500 mb-2">
+                  {review.date ? new Date(review.date).toLocaleDateString() : '날짜 정보 없음'}
+                </p>
                 {/* 사용자 이름 */}
                 <p className="text-xs text-gray-500 mb-2">{review.userName}</p>
                 {/* 리뷰 내용 */}

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { DETAILDATA } from '../../types/ProgramDetailType';
-import { DUMMY_DATA, DATA_FOR_FIXESBTN } from '../../assets/dummy/DetailPageDummy';
+import { DUMMY_DATA } from '../../assets/dummy/DetailPageDummy';
 import FixedSummitButton from '../../components/Buttons/FixedSummitButton';
 
 export default function DetailPage() {
@@ -16,7 +16,6 @@ export default function DetailPage() {
     const fetchDetail = async () => {
       try {
         const res = await axios.get(`https://letmec.p-e.kr/program/${programId}`);
-
         setDetailData(res.data.result);
       } catch (error) {
         console.log('에러 발생', error);
@@ -31,17 +30,21 @@ export default function DetailPage() {
   return (
     <main>
       <DetailThumbnail />
-      <BestReview bestReview={DUMMY_DATA.bestReviews} programTitle={DUMMY_DATA.title} />
-      <Tabs
-        hookingArr={DUMMY_DATA.hooking}
-        programIntro={DUMMY_DATA.description}
-        lecturerIntro={DUMMY_DATA.lecturer}
-        curriculums={DUMMY_DATA.curriculum}
-        latestReviews={DUMMY_DATA.latestReviews}
-        recommendedPrograms={DUMMY_DATA.recommendedPrograms}
-        faq={DUMMY_DATA.faq}
-      />
-      <FixedSummitButton program={DATA_FOR_FIXESBTN} />
+      {detailData?.bestReviews && (
+        <BestReview bestReview={detailData.bestReviews} programTitle={detailData.title} />
+      )}
+      {detailData && (
+        <Tabs
+          hookingArr={detailData.hooking || DUMMY_DATA.hooking} // 기본값으로 빈 배열 사용
+          programIntro={detailData.description || DUMMY_DATA.description} // 기본값으로 DUMMY_DATA 사용
+          lecturerIntro={detailData.lecturer || DUMMY_DATA.lecturer}
+          curriculums={detailData.curriculum || DUMMY_DATA.curriculum}
+          latestReviews={detailData.latestReviews || DUMMY_DATA.latestReviews}
+          recommendedPrograms={detailData.recommendedPrograms || DUMMY_DATA.recommendedPrograms}
+          faq={detailData.faq || DUMMY_DATA.faq}
+        />
+      )}
+      {/* <FixedSummitButton program={} /> */}
     </main>
   );
 }
