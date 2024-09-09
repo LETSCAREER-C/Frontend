@@ -14,6 +14,7 @@ import TabCurriculum from './TabCurriculum';
 import TabLatestReview from './TabLatestReview';
 import TabSuggest from './TabSuggest';
 import TabFAQ from './TabFAQ';
+import TabHookingImages from './TabHookingImages';
 
 interface Props {
   hookingArr?: Hooking[];
@@ -29,6 +30,7 @@ export default function Tabs({
   lecturerIntro,
   curriculums,
   latestReviews,
+  hookingArr,
   faq,
 }: Props) {
   const [activeTab, setActiveTab] = useState('programIntro');
@@ -149,6 +151,11 @@ export default function Tabs({
       </div>
 
       {/* 탭 메뉴와 연결된 섹션들 */}
+      {hookingArr &&
+        hookingArr.map((hookinData, i) => {
+          return <TabHookingImages key={i} hookingData={hookinData} />;
+        })}
+
       <section ref={programIntroRef} id="programIntro" className="bg-Primary-10 w-full py-20">
         <h3 className="font-pretendard font-medium text-lg text-Primary-100 text-center">
           프로그램 소개

@@ -34,10 +34,15 @@ export default function DetailPage() {
       <DetailThumbnail />
 
       {detailData && (
-        <section className="w-full flex justify-center items-center mt-5 mb-8 lg:flex-row flex-col text-center font-pretendard">
-          <h1 className="text-2xl font-bold mb-10">렛크커리어가 이뤄낸 성과</h1>
-          <PassedRate passedRate={detailData.passedRate} />
-          <GradeAverage gradeAverage={detailData.gradeAverage} gradeCount={detailData.gradeCount} />
+        <section className="w-[390px] flex justify-center items-center text-center mt-5 mb-8 mx-auto flex-col font-pretendard lg:w-[84%]">
+          <h1 className="text-2xl font-bold mb-10">렛츠커리어가 이뤄낸 성과</h1>
+          <div className="w-[350px] mx-auto lg:flex lg:flex-row lg:w-[738px] lg:justify-evenly">
+            <PassedRate passedRate={detailData.passedRate} />
+            <GradeAverage
+              gradeAverage={detailData.gradeAverage}
+              gradeCount={detailData.gradeCount}
+            />
+          </div>
         </section>
       )}
 
