@@ -56,16 +56,17 @@ export interface Curriculum {
 
 // 리뷰 타입 정의 -> 리뷰 작성 시간
 export interface Review {
+  id: number;
   programName: string;
+  grade: number;
+  date: string;
   userName: string;
+  dreamWorkField: string;
+  year: number;
+  major: string;
+  status: string;
   title: string;
   content: string;
-  dreamWorkField: string;
-  major: string;
-  year: number;
-  status: string;
-  date: string; // Date 배열 형태로 처리
-  grade: number;
 }
 
 // 추천 프로그램 타입 정의
@@ -103,4 +104,7 @@ export interface DETAILDATA {
   bestReviews: Review[];
   recommendedPrograms: RecommendedProgram[];
   faq: FAQ[];
+  gradeAverage: number;
+  passedRate: number;
+  gradeCount: number;
 }

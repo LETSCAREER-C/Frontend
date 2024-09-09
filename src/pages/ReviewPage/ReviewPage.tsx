@@ -18,6 +18,7 @@ export interface Review {
   year: number;
   major: string;
   status: string;
+  title: string;
   content: string;
 }
 

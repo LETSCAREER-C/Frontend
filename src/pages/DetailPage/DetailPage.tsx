@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { DETAILDATA } from '../../types/ProgramDetailType';
 import { DUMMY_DATA } from '../../assets/dummy/DetailPageDummy';
+import PassedRate from '../../components/Average/PassedRate';
+import GradeAverage from '../../components/Average/GradeAverage';
 import FixedSummitButton from '../../components/Buttons/FixedSummitButton';
 
 export default function DetailPage() {
@@ -23,16 +25,26 @@ export default function DetailPage() {
     };
 
     fetchDetail();
-  }, []);
+  }, [programId]);
 
   console.log('데이터 확인', detailData);
 
   return (
     <main>
       <DetailThumbnail />
+
+      {detailData && (
+        <section className="w-full flex justify-center items-center mt-5 mb-8 lg:flex-row flex-col text-center font-pretendard">
+          <h1 className="text-2xl font-bold mb-10">렛크커리어가 이뤄낸 성과</h1>
+          <PassedRate passedRate={detailData.passedRate} />
+          <GradeAverage gradeAverage={detailData.gradeAverage} gradeCount={detailData.gradeCount} />
+        </section>
+      )}
+
       {detailData?.bestReviews && (
         <BestReview bestReview={detailData.bestReviews} programTitle={detailData.title} />
       )}
+
       {detailData && (
         <Tabs
           hookingArr={detailData.hooking || DUMMY_DATA.hooking} // 기본값으로 빈 배열 사용
@@ -40,7 +52,6 @@ export default function DetailPage() {
           lecturerIntro={detailData.lecturer || DUMMY_DATA.lecturer}
           curriculums={detailData.curriculum || DUMMY_DATA.curriculum}
           latestReviews={detailData.latestReviews || DUMMY_DATA.latestReviews}
-          recommendedPrograms={detailData.recommendedPrograms || DUMMY_DATA.recommendedPrograms}
           faq={detailData.faq || DUMMY_DATA.faq}
         />
       )}

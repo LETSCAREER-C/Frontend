@@ -13,6 +13,7 @@ interface ReviewProps {
     year: number;
     major: string;
     status: string;
+    title: string;
     content: string;
   };
 }
