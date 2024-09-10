@@ -16,7 +16,7 @@ const TypeFilter: React.FC<Props> = ({ activeItems, setActiveItems }) => {
   };
 
   return (
-    <div className="flex items-center w-full">
+    <div className="flex items-center w-full sm:ml-[140px]">
       <div
         className="flex gap-[8px] ml-2 mt-[16px] sm:mt-[20px] mb-[20px] h-[32px] justify-center items-center text-[14px] sm:text-[16px] font-pretendard font-semibold 
         py-[8px] pl-[14px] pr-[16px]">
@@ -28,7 +28,7 @@ const TypeFilter: React.FC<Props> = ({ activeItems, setActiveItems }) => {
               }`}
             onClick={() => handleClick('CHALLENGE')}
           >
-            {activeItems.includes('CHALLENGE') ? <Checked className="w-[20px] h-[20px]" /> : <Unchecked className="w-[20px] h-[20px]" />}
+            {activeItems.includes('CHALLENGE') ? <Checked className="w-[16px] h-[16px]" /> : <Unchecked className="w-[16px] h-[16px]" />}
             <span className="ml-2">챌린지</span>
           </button>
           <button
@@ -38,7 +38,7 @@ const TypeFilter: React.FC<Props> = ({ activeItems, setActiveItems }) => {
               }`}
             onClick={() => handleClick('LIVECLASS')}
           >
-            {activeItems.includes('LIVECLASS') ? <Checked className="w-[20px] h-[20px]" /> : <Unchecked className="w-[20px] h-[20px]" />}
+            {activeItems.includes('LIVECLASS') ? <Checked className="w-[16px] h-[16px]" /> : <Unchecked className="w-[16px] h-[16px]" />}
             <span className="ml-2">LIVE 클래스</span>
           </button>
         </div>
