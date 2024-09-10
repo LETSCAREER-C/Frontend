@@ -29,11 +29,14 @@ const ListPage: React.FC = () => {
       try {
         const careerTag = careerFilter.includes('ALL') ? 'ALL' : careerFilter.join(',');
         const typeTags = typeFilter.map((type) => `programTypes=${type}`).join('&');
+        if (typeTags.length === 0) {
+          setTotalPages(0);
+        }
         const res = await axios.get(
           `https://letmec.p-e.kr/program/list?careerTag=${careerTag}&${typeTags}&page=0`,
         );
         setPrograms(res.data.result.programDtos);
-        setTotalPages(res.data.result.totalPageCount);
+        typeTags.length !== 0 && setTotalPages(res.data.result.totalPageCount);
       } catch (error) {
         console.log('에러 발생', error);
         setPrograms([]);
