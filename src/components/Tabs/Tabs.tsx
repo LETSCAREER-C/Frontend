@@ -5,16 +5,16 @@ import {
   FAQ,
   Hooking,
   Lecturer,
-  RecommendedProgram,
   Review,
 } from '../../types/ProgramDetailType';
-import TabHookingImages from './TabHookingImages';
+// import TabHookingImages from './TabHookingImages';
 import TabDescription from './TabDescription';
 import TabLecturerIntro from './TabLecturerIntro';
 import TabCurriculum from './TabCurriculum';
 import TabLatestReview from './TabLatestReview';
 import TabSuggest from './TabSuggest';
 import TabFAQ from './TabFAQ';
+import TabHookingImages from './TabHookingImages';
 
 interface Props {
   hookingArr?: Hooking[];
@@ -22,17 +22,15 @@ interface Props {
   lecturerIntro: Lecturer;
   curriculums: Curriculum[];
   latestReviews: Review[];
-  recommendedPrograms: RecommendedProgram[];
   faq: FAQ[];
 }
 
 export default function Tabs({
-  hookingArr,
   programIntro,
   lecturerIntro,
   curriculums,
   latestReviews,
-  recommendedPrograms,
+  hookingArr,
   faq,
 }: Props) {
   const [activeTab, setActiveTab] = useState('programIntro');
@@ -107,12 +105,6 @@ export default function Tabs({
 
   return (
     <section className="lg:w-[1200px] mx-auto">
-      {/* Hooking 이미지는 독립적으로 위에 배치 */}
-      {hookingArr &&
-        hookingArr.map((hookinData, i) => {
-          return <TabHookingImages key={i} hookingData={hookinData} />;
-        })}
-
       {/* 탭 메뉴 */}
       <div
         ref={tabRef}
@@ -159,6 +151,11 @@ export default function Tabs({
       </div>
 
       {/* 탭 메뉴와 연결된 섹션들 */}
+      {hookingArr &&
+        hookingArr.map((hookinData, i) => {
+          return <TabHookingImages key={i} hookingData={hookinData} />;
+        })}
+
       <section ref={programIntroRef} id="programIntro" className="bg-Primary-10 w-full py-20">
         <h3 className="font-pretendard font-medium text-lg text-Primary-100 text-center">
           프로그램 소개
@@ -202,7 +199,7 @@ export default function Tabs({
         <h3 className="font-pretendard font-medium text-lg text-Primary-100 text-center">
           추천 강좌
         </h3>
-        <TabSuggest recommendedPrograms={recommendedPrograms} />
+        <TabSuggest />
       </section>
 
       <section ref={faqRef} id="faq" className="bg-Neutral-grayscale-100 w-full py-20">

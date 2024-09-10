@@ -1,17 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
 import { RecommendedProgram } from '../../types/ProgramDetailType';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-interface Props {
-  recommendedPrograms: RecommendedProgram[];
-}
-
-export default function TabSuggest({ recommendedPrograms }: Props) {
+export default function TabSuggest() {
   const [activeTab, setActiveTab] = useState('CAREER_EXPLORE'); // 현재 선택된 탭 상태
   const { programId } = useParams<{ programId: string }>();
-  const navigate = useNavigate();
 
   // 각 탭별 프로그램 필터링
   const [filteredPrograms, setFilteredPrograms] = useState<RecommendedProgram[]>([]);
@@ -19,9 +13,8 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
   useEffect(() => {
     const fetchRecommendedPrograms = async () => {
       try {
-        // const res = await axios.get(`https://letmec.p-e.kr/program/${programId}`);
         const res = await axios.get(
-          `http://localhost:9000/program/${programId}/recommended/${activeTab}`,
+          `https://letmec.p-e.kr/program/${programId}/recommended/${activeTab}`,
         );
         setFilteredPrograms(res.data.result.recommendedPrograms);
       } catch (error) {
@@ -41,7 +34,6 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
             key={tag}
             onClick={() => {
               setActiveTab(tag);
-              navigate('/program/1');
             }}
             className={`text-center cursor-pointer ${
               activeTab === tag
@@ -70,9 +62,10 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
       {/* 프로그램 목록 */}
       <div className="grid gap-4">
         {filteredPrograms.slice(0, 3).map((program) => (
-          <div
+          <a
             key={program.recommendedProgramId}
             className="bg-white rounded-lg shadow p-4 mx-auto w-[276px] font-pretendard whitespace-pre-line"
+            href={`/program/${program.recommendedProgramId}`}
           >
             <img
               src={program.thumbnail}
@@ -85,7 +78,7 @@ export default function TabSuggest({ recommendedPrograms }: Props) {
               모집 마감: {program.recruitEndDate} / 진행일정: {program.programStartDate} ~{' '}
               {program.programEndDate}
             </p>
-          </div>
+          </a>
         ))}
       </div>
     </section>

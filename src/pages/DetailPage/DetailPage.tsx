@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { DETAILDATA } from '../../types/ProgramDetailType';
-import { DUMMY_DATA } from '../../assets/dummy/DetailPageDummy';
-import FixedSummitButton from '../../components/Buttons/FixedSummitButton';
+// import { DUMMY_DATA } from '../../assets/dummy/DetailPageDummy';
+import PassedRate from '../../components/Average/PassedRate';
+import GradeAverage from '../../components/Average/GradeAverage';
+// import FixedSummitButton from '../../components/Buttons/FixedSummitButton';
 
 export default function DetailPage() {
   const { programId } = useParams<{ programId: string }>();
@@ -23,25 +25,39 @@ export default function DetailPage() {
     };
 
     fetchDetail();
-  }, []);
+  }, [programId]);
 
   console.log('데이터 확인', detailData);
 
   return (
     <main>
       <DetailThumbnail />
+
+      {detailData && (
+        <section className="w-[390px] flex justify-center items-center text-center mt-5 mb-8 mx-auto flex-col font-pretendard lg:w-[84%]">
+          <h1 className="text-2xl font-bold mb-10">렛츠커리어가 이뤄낸 성과</h1>
+          <div className="w-[350px] mx-auto lg:flex lg:flex-row lg:w-[738px] lg:justify-evenly">
+            <PassedRate passedRate={detailData.passedRate} />
+            <GradeAverage
+              gradeAverage={detailData.gradeAverage}
+              gradeCount={detailData.gradeCount}
+            />
+          </div>
+        </section>
+      )}
+
       {detailData?.bestReviews && (
         <BestReview bestReview={detailData.bestReviews} programTitle={detailData.title} />
       )}
+
       {detailData && (
         <Tabs
-          hookingArr={detailData.hooking || DUMMY_DATA.hooking} // 기본값으로 빈 배열 사용
-          programIntro={detailData.description || DUMMY_DATA.description} // 기본값으로 DUMMY_DATA 사용
-          lecturerIntro={detailData.lecturer || DUMMY_DATA.lecturer}
-          curriculums={detailData.curriculum || DUMMY_DATA.curriculum}
-          latestReviews={detailData.latestReviews || DUMMY_DATA.latestReviews}
-          recommendedPrograms={detailData.recommendedPrograms || DUMMY_DATA.recommendedPrograms}
-          faq={detailData.faq || DUMMY_DATA.faq}
+          hookingArr={detailData.hooking} // 기본값으로 빈 배열 사용
+          programIntro={detailData.description} // 기본값으로 DUMMY_DATA 사용
+          lecturerIntro={detailData.lecturer}
+          curriculums={detailData.curriculum}
+          latestReviews={detailData.latestReviews}
+          faq={detailData.faq}
         />
       )}
       {/* <FixedSummitButton program={} /> */}
