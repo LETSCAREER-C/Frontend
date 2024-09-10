@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {
   Lets,
@@ -29,6 +30,7 @@ const LogoDesk: React.FC = () => {
 
 const Navigation: React.FC = () => {
   const [menuToggle, setMenuToggle] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuToggle(!menuToggle);
@@ -38,13 +40,22 @@ const Navigation: React.FC = () => {
     <>
       <nav className="h-[60px] fixed top-0 left-0 w-full bg-white border-b-[1px] z-50 flex justify-between px-5 py-3 mx-auto md:h-[70px]">
         <div className="flex items-center justify-between w-full md:mx-auto lg:w-[1200px]">
-          <div className=" md:hidden ">
+          <div
+            className=" md:hidden "
+            onClick={() => {
+              navigate('/listpage');
+            }}
+          >
             <Logo />
           </div>
           <div className="hidden md:flex items-center font-pretendard font-semibold text-neut-60">
-            <Link to="/listPage">
+            <div
+              onClick={() => {
+                navigate('/listpage');
+              }}
+            >
               <LogoDesk />
-            </Link>
+            </div>
             <Link to="/listPage" className="ml-9">
               렛츠커리어 스토리
             </Link>
@@ -103,12 +114,15 @@ const Navigation: React.FC = () => {
                 <div className="self-stretch px-2.5 py-3 justify-start items-center gap-2.5 inline-flex">
                   <div className="justify-center items-center gap-2.5 flex">
                     {/* 라우팅 수정 필요 */}
-                    <Link
-                      to="/listPage"
+                    <div
                       className="text-[#27272d] text-lg font-bold font-['Pretendard Variable'] leading-relaxed"
+                      onClick={() => {
+                        setMenuToggle(!menuToggle);
+                        navigate('/listpage');
+                      }}
                     >
                       프로그램
-                    </Link>
+                    </div>
                   </div>
                 </div>
                 <div className="self-stretch px-2.5 py-3 justify-start items-center gap-2.5 inline-flex">

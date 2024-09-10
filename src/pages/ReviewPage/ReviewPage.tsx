@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReviewBox from '../../components/Review/ReviewBox';
 import { BackBtn } from '../../assets/svg';
 import SortReview from '../../components/Review/SortReview';
-import { dummyData_review } from '../../assets/dummy/ReviewPageDummy';
+// import { dummyData_review } from '../../assets/dummy/ReviewPageDummy';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +17,7 @@ export interface Review {
   year: number;
   major: string;
   status: string;
+  title: string;
   content: string;
 }
 

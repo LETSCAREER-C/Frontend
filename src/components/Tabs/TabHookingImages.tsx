@@ -3,9 +3,10 @@ import { Hooking } from '../../types/ProgramDetailType';
 
 interface Props {
   hookingData: Hooking;
+  isMobile: boolean;
 }
 
-export default function TabHookingImages({ hookingData }: Props) {
+export default function TabHookingImages({ hookingData, isMobile }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
@@ -57,7 +58,7 @@ export default function TabHookingImages({ hookingData }: Props) {
 
   return (
     <article className="w-full p-6 mx-auto bg-Neutral-grayscale-100 font-pretendard whitespace-pre-line">
-      <div className="my-20 mx-auto text-center">
+      <div className="my-10 mx-auto text-center">
         {hookingData.preTitle && (
           <p className=" text-Primary-100 text-lg font-medium">{hookingData.preTitle}</p>
         )}
@@ -90,7 +91,7 @@ export default function TabHookingImages({ hookingData }: Props) {
               {hookingData.hookingImageList.map((hookingImage, index) => (
                 <div key={index} className="flex-shrink-0 w-full flex flex-col items-center">
                   <img
-                    src={hookingImage.imageUrl}
+                    src={isMobile ? hookingImage.imageUrl : hookingImage.pcImageUrl}
                     alt={`${hookingImage.imageUrl}`}
                     className="object-cover rounded-lg mb-2"
                   />
