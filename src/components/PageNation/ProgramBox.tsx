@@ -5,7 +5,7 @@ import CareerTags from '../Filters/CareerTags';
 import NotifyButton from '../Buttons/NotifyButton';
 import { Program } from '../../types/ProgramListType';
 
-interface ProgramBoxProps {
+export interface ProgramBoxProps {
   program: Program;
 }
 
