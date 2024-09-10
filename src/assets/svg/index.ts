@@ -15,11 +15,7 @@ export { default as ResultStar } from './ResultStar';
 export { default as Star } from './Star';
 export { default as Unchecked } from './Unchecked';
 export { default as Xclose } from './Xclose';
-export { default as CareerExplore } from './CareerExplore';
 export { default as ChallangeListpageThumbnail } from './ChallangeListpageThumbnail';
 export { default as DetailDesktopThumbnail } from './DetailDesktopThumbnail';
 export { default as DetailMobileThumbnail } from './DetailMobileThumbnail';
-export { default as DocumentPrepare } from './DocumentPrepare';
-export { default as InterviewPrepare } from './InterviewPrepare';
 export { default as LecturerImg } from './LecturerImg';
-
