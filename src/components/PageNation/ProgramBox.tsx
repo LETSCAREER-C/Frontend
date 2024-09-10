@@ -80,9 +80,17 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
         </p>
       </>
       {program.recruitStatus === RecruitState.ENDED && (
-        <div className="absolute inset-x-0 bottom-10 sm:bottom-16 flex justify-center z-20">
-          <NotifyButton onClick={handleNotificationClick} />
-        </div>
+        <>
+          <div className="sm:hidden absolute inset-x-0 bottom-10 sm:bottom-16 flex justify-center z-20">
+            <NotifyButton onClick={handleNotificationClick} />
+          </div>
+          <div
+            className={`hidden sm:flex absolute inset-x-0 bottom-10 sm:bottom-16 justify-center z-20 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'
+              }`}
+          >
+            <NotifyButton onClick={handleNotificationClick} />
+          </div>
+        </>
       )}
     </div>
   );
