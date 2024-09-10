@@ -105,11 +105,13 @@ const ListPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <CareerFilter activeItem={careerFilter} setActiveItem={setCareearFilter} />
-      <TypeFilter activeItems={typeFilter} setActiveItems={setTypeFilter} />
+    <div className="w-full flex flex-col items-center">
+      <div className="w-full max-w-screen-lg">
+        <CareerFilter activeItem={careerFilter} setActiveItem={setCareearFilter} />
+        <TypeFilter activeItems={typeFilter} setActiveItems={setTypeFilter} />
+      </div>
 
-      <div className="flex flex-wrap justify-center items-center">
+      <div className="w-full flex flex-wrap justify-center">
         {currentPrograms.map((program) => (
           <ProgramBox key={program.programId} program={program} />
         ))}

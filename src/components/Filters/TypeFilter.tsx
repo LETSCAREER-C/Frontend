@@ -16,10 +16,10 @@ const TypeFilter: React.FC<Props> = ({ activeItems, setActiveItems }) => {
   };
 
   return (
-    <div className="flex items-center w-full sm:ml-[140px]">
+    <div className="flex items-center w-full ">
       <div
         className="flex gap-[8px] ml-2 mt-[16px] sm:mt-[20px] mb-[20px] h-[32px] justify-center items-center text-[14px] sm:text-[16px] font-pretendard font-semibold 
-        py-[8px] pl-[14px] pr-[16px]">
+        py-[8px] pl-[5px] pr-[16px]">
         <div className="flex gap-[12px] ml-2 mt-[8px] mb-[20px] h-[32px] justify-center items-center ">
           <button
             className={`w-[88px] h-[36px] sm:w-[94px] sm:h-[40px] flex items-center justify-center rounded-full border ${activeItems.includes('CHALLENGE')

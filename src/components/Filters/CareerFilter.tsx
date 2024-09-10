@@ -32,8 +32,7 @@ const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }
   };
 
   return (
-    // <div className="flex justify-center">
-    <div className="flex items-center justify-center sm:justify-start w-full sm:ml-[140px]">
+    <div className="flex items-center justify-center sm:justify-start w-full mx-[20px]">
       <div className="relative w-full h-[56px] sm:h-[58px] mt-[59px] sm:mt-[69px] inline-flex justify-center bg-white">
         <section className="flex w-full h-full bg-white">
           {items.map((item) => (
