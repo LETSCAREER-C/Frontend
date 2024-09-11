@@ -1,21 +1,19 @@
-import { Dispatch } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
 const FILTER_ITEMS = [
   { description: '전체', careerType: 'ALL' },
   { description: '커리어 탐색', careerType: 'CAREER_EXPLORE' },
   { description: '서류 준비', careerType: 'DOCUMENT_PREPARE' },
   { description: '면접 준비', careerType: 'INTERVIEW_PREPARE' },
-] as const;
-
-type CareerType = typeof FILTER_ITEMS[number]['careerType']
+];
 
 interface CareerFilterProps {
-  activeItem: CareerType[];
-  setActiveItem: Dispatch<React.SetStateAction<CareerType[]>>;
+  activeItem: string[];
+  setActiveItem: Dispatch<SetStateAction<string[]>>;
 }
 
 const CareerFilter: React.FC<CareerFilterProps> = ({ activeItem, setActiveItem }) => {
-  const handleClick = (careerType: CareerType) => {
+  const handleClick = (careerType: string) => {
     if (careerType === 'ALL') {
       setActiveItem((prev) => (prev.includes('ALL') ? [] : ['ALL']));
     } else {
