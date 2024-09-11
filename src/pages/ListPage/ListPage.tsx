@@ -114,8 +114,8 @@ const ListPage: React.FC = () => {
         <TypeFilter activeItems={typeFilter} setActiveItems={setTypeFilter} />
       </div>
 
-      <div className="w-full lg:w-[1200px]">
-        <div className="grid grid-cols-2 lg:grid-cols-4 w-[370px] lg:w-full mx-auto">
+      <div className="w-full sm:w-[1200px]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 w-[370px] sm:w-full mx-auto">
           {currentPrograms.map((program) => (
             <ProgramBox key={program.programId} program={program} />
           ))}

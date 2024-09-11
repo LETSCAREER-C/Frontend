@@ -45,7 +45,7 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
   return (
     <div
       key={program.programId}
-      className="relative flex flex-col justify-center rounded-lg border border-gray-300 mb-[20px] mx-[10px] w-[165px] h-[276px] p-[8px] lg:w-[275px] lg:h-[355px] lg:p-[10px] font-pretendard "
+      className="relative flex flex-col justify-center rounded-lg border border-gray-300 mb-[20px] mx-[10px] w-[165px] h-[276px] p-[8px] sm:w-[275px] sm:h-[355px] sm:p-[10px] font-pretendard "
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
       onClick={() => navigate(`/program/${program.programId}`)}

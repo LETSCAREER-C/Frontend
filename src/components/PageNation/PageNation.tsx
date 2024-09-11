@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 
 export interface PageNationProps {
   currentPage: number; // 사용자가 선택한 페이지
-  // 사용자가 페이지 번호를 클릭했을 때 호출되는 함수, 선택된 페이지 번호를 인자로 받음, 해당 페이지로 데이터를 변경
-  totalPages: number;
+  totalPages: number; // 사용자가 페이지 번호를 클릭했을 때 호출되는 함수
   handlePageChange: (pageNumber: number) => void;
 }
 
