@@ -20,7 +20,7 @@ const ListPage: React.FC = () => {
   const [programs, setPrograms] = useState<Program[]>([]);
   const [currentPrograms, setCurrentPrograms] = useState<Program[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
-  const [careerFilter, setCareearFilter] = useState<string[]>(initialCareerFilter);
+  const [careerFilter, setCareerFilter] = useState<string[]>(initialCareerFilter);
   const [typeFilter, setTypeFilter] = useState<string[]>(initialTypeFilter);
   const [totalPages, setTotalPages] = useState<number>(0);
 
@@ -103,14 +103,14 @@ const ListPage: React.FC = () => {
   }, [currentPage, careerFilter, typeFilter, navigate]);
 
   // 페이지 변경 함수 (PageNation에서 사용자가 페이지 번호 누르면 호출됨)
-  const getCurrentPage = (pageNumber: number) => {
+  const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
   return (
     <div className="w-full flex flex-col items-center">
       <div className="w-full">
-        <CareerFilter activeItem={careerFilter} setActiveItem={setCareearFilter} />
+        <CareerFilter activeItem={careerFilter} setActiveItem={setCareerFilter} />
         <TypeFilter activeItems={typeFilter} setActiveItems={setTypeFilter} />
       </div>
 
@@ -126,7 +126,7 @@ const ListPage: React.FC = () => {
       <PageNation
         currentPage={currentPage} // 현재 페이지
         totalPages={totalPages}
-        getCurrentPage={getCurrentPage} // 페이지 변경 함수
+        handlePageChange={handlePageChange}
       />
     </div>
   );
