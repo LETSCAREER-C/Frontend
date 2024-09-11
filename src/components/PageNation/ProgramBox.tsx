@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import RecruitTags, { RecruitState } from '../Filters/RecruitTags';
 import CareerTags from '../Filters/CareerTags';
@@ -16,10 +16,6 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
   const handleMouseLeave = () => setIsHovered(false);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(isHovered);
-  }, [isHovered]);
 
   const handleNotificationClick = () => {
     alert('출시 알림 신청 완료!');
@@ -56,6 +52,15 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
             <>
               <div className="absolute inset-0 bg-[#27272D47] bg-opacity-28 rounded-lg z-10"></div>
               <RecruitTags status={RecruitState.ENDED} program={program}></RecruitTags>
+              <div className="sm:hidden absolute inset-x-0 bottom-10 sm:bottom-16 flex justify-center z-20">
+                <NotifyButton onClick={handleNotificationClick} />
+              </div>
+              <div
+                className={`hidden sm:flex absolute inset-x-0 bottom-10 sm:bottom-16 justify-center z-20 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'
+                  }`}
+              >
+                <NotifyButton onClick={handleNotificationClick} />
+              </div>
             </>
           )}
           {program.recruitStatus === RecruitState.RECRUITING && (
@@ -79,19 +84,6 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
           </span>
         </p>
       </>
-      {program.recruitStatus === RecruitState.ENDED && (
-        <>
-          <div className="sm:hidden absolute inset-x-0 bottom-10 sm:bottom-16 flex justify-center z-20">
-            <NotifyButton onClick={handleNotificationClick} />
-          </div>
-          <div
-            className={`hidden sm:flex absolute inset-x-0 bottom-10 sm:bottom-16 justify-center z-20 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'
-              }`}
-          >
-            <NotifyButton onClick={handleNotificationClick} />
-          </div>
-        </>
-      )}
     </div>
   );
 };
