@@ -61,7 +61,7 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
       {/* 테그 섹션 */}
       <span className="inline-flex">
         {renderRecruitStatus()}
-        <CareerTags status={program.tag} />
+        <CareerTags status={program.tag as "CAREER_EXPLORE" | "DOCUMENT_PREPARE" | "INTERVIEW_PREPARE"} />
       </span>
 
       {/* 타이틀 */}
