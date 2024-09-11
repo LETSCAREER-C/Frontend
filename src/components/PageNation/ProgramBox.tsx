@@ -32,7 +32,7 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
   return (
     <div
       key={program.programId}
-      className="relative flex flex-col justify-center rounded-lg border border-gray-300 mb-[20px] mx-[10px] w-[165px] h-[276px] p-[8px] sm:w-[275px] sm:h-[321px] sm:p-[10px] font-pretendard "
+      className="relative flex flex-col justify-center rounded-lg border border-gray-300 mb-[20px] mx-[10px] w-[165px] h-[276px] p-[8px] lg:w-[275px] lg:h-[355px] lg:p-[10px] font-pretendard "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => {
@@ -47,7 +47,7 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
             className="w-full h-full top-0 object-cover rounded-t-[4px] rounded-b-[4px] opacity-100"
           />
         </div>
-        <span className="flex inline-flex">
+        <span className="inline-flex">
           {program.recruitStatus === RecruitState.ENDED && (
             <>
               <div className="absolute inset-0 bg-[#27272D47] bg-opacity-28 rounded-lg z-10"></div>
@@ -56,8 +56,9 @@ const ProgramBox: React.FC<ProgramBoxProps> = ({ program }) => {
                 <NotifyButton onClick={handleNotificationClick} />
               </div>
               <div
-                className={`hidden sm:flex absolute inset-x-0 bottom-10 sm:bottom-16 justify-center z-20 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'
-                  }`}
+                className={`hidden sm:flex absolute inset-x-0 bottom-10 sm:bottom-16 justify-center z-20 transition-opacity duration-300 ${
+                  isHovered ? 'opacity-100' : 'opacity-0'
+                }`}
               >
                 <NotifyButton onClick={handleNotificationClick} />
               </div>
