@@ -7,8 +7,6 @@ interface SummitBtnProps {
 
 const FixedSummitButton: React.FC<SummitBtnProps> = ({ program }) => {
   const handleClick = () => {
-    console.log('클릭');
-
     if (program.recruitStatus === RecruitState.ENDED) {
       alert('재출시 알림 신청이 완료되었습니다!');
     }

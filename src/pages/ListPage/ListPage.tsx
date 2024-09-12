@@ -29,7 +29,7 @@ const ListPage: React.FC = () => {
       try {
         const careerTag = careerFilter.includes('ALL') ? 'ALL' : careerFilter.join(',');
         const typeTags = typeFilter.map((type) => `programTypes=${type}`).join('&');
-        if (typeTags.length === 0) {
+        if (typeTags.length === 0) { // 타입 필터 미선택 시 아무것도 띄우지 않음
           setTotalPages(0);
         }
         const res = await axios.get(
