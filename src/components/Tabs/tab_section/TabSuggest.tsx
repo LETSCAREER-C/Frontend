@@ -2,13 +2,9 @@ import { useEffect, useState } from 'react';
 import { RecommendedProgram } from '../../../types/ProgramDetailType';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-<<<<<<< HEAD:src/components/Tabs/TabSuggest.tsx
-import { formatDate } from '../../utils/formatDate';
-import { RecommendedProgramSchema } from '../../types/DetailSchema'; // Update the import path if necessary
-import { z } from 'zod';
-=======
 import { formatDate } from '../../../utils/formatDate';
->>>>>>> develop:src/components/Tabs/tab_section/TabSuggest.tsx
+import { RecommendedProgramSchema } from '../../../types/DetailSchema';
+import { z } from 'zod';
 
 export default function TabSuggest() {
   const [activeTab, setActiveTab] = useState('CAREER_EXPLORE'); // 현재 선택된 탭 상태
@@ -39,7 +35,7 @@ export default function TabSuggest() {
       }
     };
     fetchRecommendedPrograms();
-  }, [activeTab, programId]); // 
+  }, [activeTab, programId]); //
 
   return (
     <section className="mx-auto px-4 lg:w-[905px] font-pretendard">
@@ -50,10 +46,11 @@ export default function TabSuggest() {
             onClick={() => {
               setActiveTab(tag);
             }}
-            className={`text-center cursor-pointer ${activeTab === tag
-              ? 'text-Neutral-grayscale-10 border-b-2 border-Primary-100'
-              : 'text-Neutral-grayscale-70'
-              }`}
+            className={`text-center cursor-pointer ${
+              activeTab === tag
+                ? 'text-Neutral-grayscale-10 border-b-2 border-Primary-100'
+                : 'text-Neutral-grayscale-70'
+            }`}
           >
             <p
               className={`font-medium text-xs lg:text-sm ${activeTab === tag ? 'text-Neutral-grayscale-10' : 'text-Neutral-grayscale-70'}`}
