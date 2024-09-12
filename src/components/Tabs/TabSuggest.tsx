@@ -3,6 +3,8 @@ import { RecommendedProgram } from '../../types/ProgramDetailType';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { formatDate } from '../../utils/formatDate';
+import { RecommendedProgramSchema } from '../../types/DetailSchema'; // Update the import path if necessary
+import { z } from 'zod';
 
 export default function TabSuggest() {
   const [activeTab, setActiveTab] = useState('CAREER_EXPLORE'); // 현재 선택된 탭 상태
@@ -17,13 +19,23 @@ export default function TabSuggest() {
         const res = await axios.get(
           `https://letmec.p-e.kr/program/${programId}/recommended/${activeTab}`,
         );
-        setFilteredPrograms(res.data.result.recommendedPrograms);
+        const fetchedPrograms = res.data.result.recommendedPrograms;
+
+        const parsedData = z.array(RecommendedProgramSchema).safeParse(fetchedPrograms);
+
+        if (!parsedData.success) {
+          console.error('검증 실패', parsedData.error);
+          setFilteredPrograms([]);
+          return;
+        }
+        setFilteredPrograms(parsedData.data);
       } catch (error) {
         console.log('에러 발생', error);
+        setFilteredPrograms([]);
       }
     };
     fetchRecommendedPrograms();
-  }, [activeTab]);
+  }, [activeTab, programId]); // 
 
   return (
     <section className="mx-auto px-4 lg:w-[905px] font-pretendard">
@@ -36,11 +48,10 @@ export default function TabSuggest() {
             onClick={() => {
               setActiveTab(tag);
             }}
-            className={`text-center cursor-pointer ${
-              activeTab === tag
-                ? 'text-Neutral-grayscale-10 border-b-2 border-Primary-100'
-                : 'text-Neutral-grayscale-70'
-            }`}
+            className={`text-center cursor-pointer ${activeTab === tag
+              ? 'text-Neutral-grayscale-10 border-b-2 border-Primary-100'
+              : 'text-Neutral-grayscale-70'
+              }`}
           >
             <p
               className={`font-medium text-xs lg:text-sm ${activeTab === tag ? 'text-Neutral-grayscale-10' : 'text-Neutral-grayscale-70'}`}

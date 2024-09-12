@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Review } from '../../pages/ReviewPage/ReviewPage';
+import { Review } from '../../types/ProgramDetailType';
 
 interface SortReviewProps {
   reviews: Review[];
